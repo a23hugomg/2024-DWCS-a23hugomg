@@ -1,9 +1,16 @@
-<?php
+<?php declare(strict_types=1);
     function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
+    }
+    function createSelect(array $array){
+        foreach ($array as $language => $value) {
+            echo    "<option value=".$value["text"].">";
+            echo    $language;
+            echo    "</option>";
+        }
     }
 ?>
 <html>
@@ -32,54 +39,51 @@
     <body>
         <h2>First practice using forms.</h2>
         <?php
+        $languages = array(
+            "Java Programming" => array("value" => 0),
+            "Web Design" => array("value" => 1),
+            "Dockers administration" => array("value" => 2),
+            "Django framework" => array("value" => 3),
+            "Mongo database" => array("value" => 4)
+        );
         $username = $subject = "";
-        $errorUser = $errorSubject = "";
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (empty($_POST["nombre"]) || $_POST["nombre"] == "") {
-                $errorUser = "*El nombre no puede estar vacio";
-            }else{
-                $username = test_input($_POST["nombre"]);
-            }
+        // $errorUser = $errorSubject = "";
+        // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //     if (empty($_POST["name"]) || $_POST["name"] == "") {
+        //         $errorUser = "*El nombre es obligatorio";
+        //     }else{
+        //         $username = test_input($_POST["nombre"]);
+        //     }
 
-            if (empty($_POST["contraseña"]) || $_POST["contraseña"] == "") {
-                $errorPass = "*La contraseña no puede estar vacio";
-            }else{
-                $password = test_input($_POST["contraseña"]);
-            }
-        }
+        //     if (empty($_POST["languages"]) || $_POST["languages"] == "") {
+        //         $errorSubject = "*El lenguaje es obligatorio";
+        //     }else{
+        //         $subject = test_input($_POST["languages"]);
+        //     }
+        // }
         ?>
 
-        <form method='POST' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <form method='POST' action="manage.php">
             <table>
                 <tr aria-colspan="2">
                     <td>Name and surnames:</td>
-                    <td><input type="text" name="Name" value="<?php echo $username?>"></td>
-                    <td><span class="error"><?php echo $errorUser?></span></td>
+                    <td><input type="text" name="name" required></td>
                 </tr>
                 <tr class="espacio"></tr>
                 <tr>
                     <td>Subject to enroll:</td>
                     <td>
-
+                        <select name="languages" id="1">
+                            <?php createSelect($languages);?>
+                        </select>
                     </td>
-                    <td><span class="error"><?php echo $errorPass?></span></td>
                 </tr>
                 <tr class="espacio"></tr>
                 <tr>
-                    <td id="buttons"><input type="submit" value="Semd data"></td>
+                    <td id="buttons"><input type="submit" value="Send data"></td>
                     <td></td>
                 </tr>
             </table>
         </form>
-
-        <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if ($errorUser == "" && $errorSubject == "") {
-                    echo "<h3>El fomulario ha sido envidao!</h3>";
-                }else{
-                    echo "<h3 style=\"color: red;\">Error</h3>";
-                }
-            }
-        ?>
     </body>
 </html>
