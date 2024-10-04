@@ -8,8 +8,12 @@
     function select($valor, array $array){
         foreach ($array as $key => $value) {
             if ($valor == $value) {
+                echo    "<option value=\"$valor\" selected=\"selected\">";
+                echo    $key;
+                echo    "</option>";
+            }else{
                 echo    "<option value=\"$valor\">";
-                echo    $language;
+                echo    $key;
                 echo    "</option>";
             }
         }
@@ -53,10 +57,10 @@
                 $username = test_input($_GET["name"]);
             }
 
-            if (empty($_GET["language"]) && ($_GET["language"]!=0)) {
+            if (empty($_GET["subject"]) && ($_GET["subject"]!=0)) {
                 $errorSubject = "*El lenguaje es obligatorio";
             }else{
-                $subject = test_input($_GET["language"]);
+                $subject = test_input($_GET["subject"]);
             }
         }
         ?>
@@ -65,15 +69,23 @@
             <table>
                 <tr aria-colspan="2">
                     <td>Name and surnames:</td>
-                    <td><input type="text" name="name" value="<?php echo $_GET["Name"]?>"></td>
+                    <td><input type="text" name="name" value="<?php echo $_GET["name"]?>"></td>
                 </tr>
                 <tr class="espacio"></tr>
                 <tr>
                     <td>Subject to enroll:</td>
                     <td>
-                        <select name="language" id="1">
+                        <select name="subject" id="1">
                             <?php select($subject, $languages);?>
                         </select>
+                    </td>
+                </tr>
+                <tr class="espacio"></tr>
+                <tr>
+                    <td>Choose a type of classes:</td>
+                    <td>
+                        <input type="radio" name="classes" id="1" value="In-person">In-person classes
+                        <input type="radio" name="classes" id="2" value="distance">Distance classes
                     </td>
                 </tr>
                 <tr class="espacio"></tr>
