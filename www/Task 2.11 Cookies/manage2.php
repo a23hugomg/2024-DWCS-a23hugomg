@@ -48,6 +48,14 @@ function select($valor, array $array)
 <body>
     <h2>First practice using forms.</h2>
     <?php
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        if (!isset($_COOKIE["name"])) {
+            echo "<h1>Cookie named " . $_COOKIE["name"] . " is not set!</h1>";
+        } else {
+            echo "<h1>Cookie " . $_COOKIE["name"] . " is set!</h1><br>";
+            echo "<h1>Value is: " . $_COOKIE["name"] . "</h1>";
+        }
+    }
     $subjects = array(
         "Java Programming" => 0,
         "Web Design" => 1,
@@ -59,16 +67,16 @@ function select($valor, array $array)
     $errorUser = $errorSubject = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        if (empty($_GET["name"])) {
+        if (empty($_COOKIE["name"])) {
             $errorUser = "El nombre es obligatorio";
         } else {
-            $username = test_input($_GET["name"]);
+            $username = test_input($_COOKIE["name"]);
         }
 
-        if (empty($_GET["subject"]) && ($_GET["subject"] != 0)) {
+        if (empty($_COOKIE["subject"]) && ($_COOKIE["subject"] != 0)) {
             $errorSubject = "*El lenguaje es obligatorio";
         } else {
-            $subject = test_input($_GET["subject"]);
+            $subject = test_input($_COOKIE["subject"]);
         }
     }
     ?>
@@ -77,7 +85,7 @@ function select($valor, array $array)
         <table>
             <tr aria-colspan="2">
                 <td>Name and surnames:</td>
-                <td><input type="text" name="name" value="<?php echo $_GET["name"] ?>"></td>
+                <td><input type="text" name="name" value="<?php echo $_COOKIE["name"] ?>"></td>
             </tr>
             <tr class="espacio"></tr>
             <tr>
