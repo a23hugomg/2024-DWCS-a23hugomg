@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FitTrack</title>
-  <link rel="stylesheet" type="text/css" href="./style.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./Style.css" media="screen" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -37,11 +37,11 @@
       <img src="../img/tablas.jpg" />
     </div>
   </div>
-  <div class="footer">
+  <footer>
     <div class="box">
       <p>Footer</p>
     </div>
-  </div>
+  </footer>
 </body>
 
 </html>
