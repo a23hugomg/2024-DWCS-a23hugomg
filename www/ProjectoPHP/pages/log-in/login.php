@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack</title>
-    <link rel="stylesheet" type="text/css" href="./log-in-style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./log-in-style.css?v=1" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -19,7 +19,7 @@
         </div>
         <div class="menu">
             <a href="../index.php">Home</a>
-            <a href="./log-in/login.php">Log-In</a>
+            <a href="./login.php">Log-In</a>
             <a href="../register/register.php">Register</a>
         </div>
     </div>
@@ -28,36 +28,33 @@
         <div class="form">
             <form action="log-in" method="post">
                 <table>
-                    <td>
-                        <tr>Log in</tr>
-                    </td>
-                    <td>
-                        <tr>or <a href="../register/register.php">create an account</a></tr>
-                    </td>
-                    <td>
-                        <tr>Username</tr>
-                    </td>
-                    <td>
-                        <tr><input type="text" name="username"></textarea></tr>
-                    </td>
-                    <td>
-                        <tr>Password</tr>
-                    </td>
-                    <td>
-                        <tr><input type="text" name="password"></tr>
-                    </td>
-                    <td>
-                        <tr>Show password</tr>
-                    </td>
-                    <td>
-                        <tr><input type="submit" value="Sing in"></tr>
-                    </td>
-                    <td>
-                        <tr><a href="">Forgot username?</a></tr>
-                    </td>
-                    <td>
-                        <tr><a href="">Forgot password?</a></tr>
-                    </td>
+                    <tr>
+                        <td><h2>Log in</h2></td>
+                    </tr>
+                    <tr class="espacio"></tr>
+                    <tr>
+                        <td>or <a href="../register/register.php" class="createAccount">create an account</a></td>
+                    </tr>
+                    <tr class="espacio"></tr>
+                    <tr>
+                        <td>Username</td>
+                    </tr>
+                    <tr class="espacio"></tr>
+                    <tr>
+                        <td><input type="text" size="30" name="username" ></textarea></td>
+                    </tr>
+                    <tr class="espacio"></tr>
+                    <tr>
+                        <td>Password</td>
+                    </tr>
+                    <tr class="espacio"></tr>
+                    <tr>
+                        <td><input type="text" size="30" name="password></td>
+                    </tr>
+                    <tr class="espacio"></tr>
+                    <tr>
+                        <td><input type="submit" value="Log in" class="logInButton"></td>
+                    </tr>
                 </table>
             </form>
         </div>
