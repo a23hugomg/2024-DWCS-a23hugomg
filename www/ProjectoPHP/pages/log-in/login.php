@@ -1,3 +1,37 @@
+<?php
+//Check the user input so that it is safe
+function test_input($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
+
+function comprobarUsuario($username, $password){
+	if($username === "usuario" and $password === "abc123"){
+		$usu['username'] = "usuario";
+		$usu['rol'] = 0;
+		return $usu;
+	}elseif($username === "admin" and $password === "abc123."){
+		 $usu['username'] = "admin";
+		 $usu['rol'] = 1;
+		 return $usu;
+	}else return false;
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {  	
+	$usuario = test_input($_POST['usuario']);
+	$password = test_input($_POST['password']);
+	$usu = comprobarUsuario($usuario, $password);
+    if($usu==false){
+		$err = true;
+		$usuario = $_POST['usuario'];
+	}else{	
+		session_start();
+		$_SESSION['usuario'] = $usuario;
+		header("Location: ../funcionalidades/funcionalidades.php");	
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +39,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack</title>
-    <link rel="stylesheet" type="text/css" href="./log-in-style.css?v=1" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./log-in-style.css?v=3" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -18,9 +52,7 @@
             <h1>FitTrack</h1>
         </div>
         <div class="menu">
-            <a href="../index.php">Home</a>
-            <a href="./login.php">Log-In</a>
-            <a href="../register/register.php">Register</a>
+            <a href="../index.php" sr><img src="../../img/hogar.png"/></a>
         </div>
     </div>
     <hr>
@@ -61,7 +93,11 @@
     </div>
     <footer>
         <div class="box">
-            <p>Footer</p>
+        <p>Contacto: +34 658 31 58 15 </p> 
+        <p>Siguenos en nuestras redes: 
+            <a href="https://www.instagram.com/?hl=es">Instagram</a>
+            <a href="https://www.facebook.com/?locale=es_ES">Facebook</a>
+        </p>
         </div>
     </footer>
 </body>
