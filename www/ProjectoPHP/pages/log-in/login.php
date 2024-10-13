@@ -1,35 +1,37 @@
 <?php
 //Check the user input so that it is safe
-function test_input($data) {
-	$data = trim($data);
-	$data = stripslashes($data);
-	$data = htmlspecialchars($data);
-	return $data;
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
-function comprobarUsuario($username, $password){
-	if($username === "usuario" and $password === "abc123"){
-		$usu['username'] = "usuario";
-		$usu['rol'] = 0;
-		return $usu;
-	}elseif($username === "admin" and $password === "abc123."){
-		 $usu['username'] = "admin";
-		 $usu['rol'] = 1;
-		 return $usu;
-	}else return false;
+function comprobarUsuario($username, $password)
+{
+    if ($username === "usuario" and $password === "abc123") {
+        $usu['username'] = "usuario";
+        $usu['rol'] = 0;
+        return $usu;
+    } elseif ($username === "admin" and $password === "abc123.") {
+        $usu['username'] = "admin";
+        $usu['rol'] = 1;
+        return $usu;
+    } else return false;
 }
-if ($_SERVER["REQUEST_METHOD"] == "POST") {  	
-	$usuario = test_input($_POST['usuario']);
-	$password = test_input($_POST['password']);
-	$usu = comprobarUsuario($usuario, $password);
-    if($usu==false){
-		$err = true;
-		$usuario = $_POST['usuario'];
-	}else{	
-		session_start();
-		$_SESSION['usuario'] = $usuario;
-		header("Location: ../funcionalidades/funcionalidades.php");	
-	}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = test_input($_POST['usuario']);
+    $password = test_input($_POST['password']);
+    $usu = comprobarUsuario($usuario, $password);
+    if ($usu == false) {
+        $err = true;
+        $usuario = $_POST['usuario'];
+    } else {
+        session_start();
+        $_SESSION['usuario'] = $usuario;
+        header("Location: ../funcionalidades/funcionalidades.php");
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -44,6 +46,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+    <?php if (isset($_GET["redirigido"])) {
+        echo "<p>Please introduce login to continue </p>";
+    } ?>
+    <?php if (isset($err) and $err == true) {
+        echo "<p> Please check user and password </p>";
+    } ?>
     <div class="header">
         <div class="logo">
             <img src="../../img/gimnasio (1).png" height="100px" />
@@ -52,16 +60,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1>FitTrack</h1>
         </div>
         <div class="menu">
-            <a href="../index.php" sr><img src="../../img/hogar.png"/></a>
+            <a href="../index.php" sr><img src="../../img/hogar.png" /></a>
         </div>
     </div>
     <hr>
     <div class="body">
         <div class="form">
-            <form action="log-in" method="post">
+            <form action="../funcionalidades/funcionalidades.php" method="POST">
                 <table>
                     <tr>
-                        <td><h2>Log in</h2></td>
+                        <td>
+                            <h2>Log in</h2>
+                        </td>
                     </tr>
                     <tr class="espacio"></tr>
                     <tr>
@@ -73,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                     <tr class="espacio"></tr>
                     <tr>
-                        <td><input type="text" size="30" name="username" ></textarea></td>
+                        <td><input type="text" size="30" name="username" value="<?php if (isset($usuario)) echo $usuario; ?>"></td>
                     </tr>
                     <tr class="espacio"></tr>
                     <tr>
@@ -81,11 +91,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                     <tr class="espacio"></tr>
                     <tr>
-                        <td><input type="text" size="30" name="password></td>
+                        <td><input type="text" size="30" name="password"></td>
                     </tr>
-                    <tr class="espacio"></tr>
+                    <tr class=" espacio">
+                    </tr>
+                    </tr>
                     <tr>
-                        <td><input type="submit" value="Log in" class="logInButton"></td>
+                        <td><input type="submit" value="Log in" name="logInButton"></td>
                     </tr>
                 </table>
             </form>
@@ -93,11 +105,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <footer>
         <div class="box">
-        <p>Contacto: +34 658 31 58 15 </p> 
-        <p>Siguenos en nuestras redes: 
-            <a href="https://www.instagram.com/?hl=es">Instagram</a>
-            <a href="https://www.facebook.com/?locale=es_ES">Facebook</a>
-        </p>
+            <p>Contacto: +34 658 31 58 15 </p>
+            <p>Siguenos en nuestras redes:
+                <a href="https://www.instagram.com/?hl=es">Instagram</a>
+                <a href="https://www.facebook.com/?locale=es_ES">Facebook</a>
+            </p>
         </div>
     </footer>
 </body>

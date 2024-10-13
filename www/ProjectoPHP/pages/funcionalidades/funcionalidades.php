@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['usuario'])) {
-	header("Location: login.php?redirigido=true");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +5,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack</title>
-    <link rel="stylesheet" type="text/css" href="./log-in-style.css?v=3" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./funcionalidades.css?v=2 media=" screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -24,20 +18,27 @@ if (!isset($_SESSION['usuario'])) {
             <h1>FitTrack</h1>
         </div>
         <div class="menu">
-            <a href="../index.php" sr><img src="../../img/hogar.png"/></a>
+            <a href="../log-out/logout.php" sr><img src="../../img/cerrar-sesion.png" /></a>
         </div>
     </div>
     <hr>
     <div class="body">
-        <?php echo "Welcome " . $_SESSION['usuario']; ?>
+        <div class="buttons">
+            <a href="./addTraining/addTraining.php">New Training</a>
+            <a href="./historyTraining/historyTraining.php">History</a>
+            <a href="../log-out/logout.php">Log out</a>
+        </div>
+        <div class="subtitle">
+            <h3>What you want to do today?</h3>
+        </div>
     </div>
     <footer>
         <div class="box">
-        <p>Contacto: +34 658 31 58 15 </p> 
-        <p>Siguenos en nuestras redes: 
-            <a href="https://www.instagram.com/?hl=es">Instagram</a>
-            <a href="https://www.facebook.com/?locale=es_ES">Facebook</a>
-        </p>
+            <p>Contacto: +34 658 31 58 15 </p>
+            <p>Siguenos en nuestras redes:
+                <a href="https://www.instagram.com/?hl=es">Instagram</a>
+                <a href="https://www.facebook.com/?locale=es_ES">Facebook</a>
+            </p>
         </div>
     </footer>
 </body>
