@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FitTrack</title>
-  <link rel="stylesheet" type="text/css" href="./style.css?v=3" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./style.css?v=2" media="screen" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -20,8 +20,8 @@
     <div class="menu">
       <a href="./index.php">Home</a>
       <a href="./log-in/login.php">Log-In</a>
-      <a href="./register/register.php">Register</a>
-    </div>
+<!--       <a href="./register/register.php">Register</a>
+ -->    </div>
   </div>
   <hr>
   <div class="body">
@@ -41,8 +41,8 @@
     <div class="box">
       <p>Contacto: +34 658 31 58 15 </p> 
       <p>Siguenos en nuestras redes: 
-        <a href="https://www.instagram.com/?hl=es">Instagram</a>
-        <a href="https://www.facebook.com/?locale=es_ES">Facebook</a>
+        <a href="https://www.instagram.com/?hl=es" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/?locale=es_ES" target="_blank">Facebook</a>
       </p>
     </div>
   </footer>

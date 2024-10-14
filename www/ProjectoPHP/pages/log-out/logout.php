@@ -1,5 +1,6 @@
 <?php
 session_start();
+header("Location: /ProjectoPHP/pages/index.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,7 @@ session_start();
 
     // destroy the session
     session_destroy();
+    
     ?>
 
 </body>

@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 //Check the user input so that it is safe
 function test_input($data)
 {
@@ -8,29 +11,21 @@ function test_input($data)
     return $data;
 }
 
-function comprobarUsuario($username, $password)
-{
-    if ($username === "usuario" and $password === "abc123") {
-        $usu['username'] = "usuario";
-        $usu['rol'] = 0;
-        return $usu;
-    } elseif ($username === "admin" and $password === "abc123.") {
-        $usu['username'] = "admin";
-        $usu['rol'] = 1;
-        return $usu;
-    } else return false;
-}
+$users = [
+    'usuario' => 'abc123',
+    'admin' => 'abc123.'
+];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = test_input($_POST['usuario']);
+    $username = test_input($_POST['username']);
     $password = test_input($_POST['password']);
-    $usu = comprobarUsuario($usuario, $password);
-    if ($usu == false) {
-        $err = true;
-        $usuario = $_POST['usuario'];
+    
+    if (isset($users['usuario']) == $username && $users[$username] == $password) {
+        $_SESSION['username'] = $username;
+        header("Location: /ProjectoPHP/pages/funcionalidades/funcionalidades.php");
+        exit();        
     } else {
-        session_start();
-        $_SESSION['usuario'] = $usuario;
-        header("Location: ../funcionalidades/funcionalidades.php");
+        $err = true;
     }
 }
 ?>
@@ -46,12 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php if (isset($_GET["redirigido"])) {
-        echo "<p>Please introduce login to continue </p>";
-    } ?>
-    <?php if (isset($err) and $err == true) {
-        echo "<p> Please check user and password </p>";
-    } ?>
     <div class="header">
         <div class="logo">
             <img src="../../img/gimnasio (1).png" height="100px" />
@@ -66,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <hr>
     <div class="body">
         <div class="form">
-            <form action="../funcionalidades/funcionalidades.php" method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                 <table>
                     <tr>
                         <td>
@@ -83,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                     <tr class="espacio"></tr>
                     <tr>
-                        <td><input type="text" size="30" name="username" value="<?php if (isset($usuario)) echo $usuario; ?>"></td>
+                        <td><input type="text" size="30" name="username" value="<?php if (isset($username)) echo $username; ?>"></td>
                     </tr>
                     <tr class="espacio"></tr>
                     <tr>
@@ -91,24 +80,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                     <tr class="espacio"></tr>
                     <tr>
-                        <td><input type="text" size="30" name="password"></td>
+                        <td><input type="password" size="30" name="password"></td>
                     </tr>
-                    <tr class=" espacio">
-                    </tr>
-                    </tr>
+                    <tr class=" espacio"></tr>
                     <tr>
-                        <td><input type="submit" value="Log in" name="logInButton"></td>
+                        <td><input type="submit" value="Log in" name="logInButton" class="logInButton   "></td>
                     </tr>
                 </table>
             </form>
+            <?php if(isset($_GET["redirigido"])){
+        echo "<h3>Please introduce login to continue </h3>";
+    }?>
+    <?php if(isset($err) and $err == true){
+        echo "<h3> Please check user or password </h3>";
+    }?>
         </div>
     </div>
+
     <footer>
         <div class="box">
             <p>Contacto: +34 658 31 58 15 </p>
             <p>Siguenos en nuestras redes:
-                <a href="https://www.instagram.com/?hl=es">Instagram</a>
-                <a href="https://www.facebook.com/?locale=es_ES">Facebook</a>
+                <a href="https://www.instagram.com/?hl=es" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com/?locale=es_ES" target="_blank">Facebook</a>
             </p>
         </div>
     </footer>

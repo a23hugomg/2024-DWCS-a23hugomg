@@ -1,3 +1,12 @@
+<?php
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +33,7 @@
     <hr>
     <div class="body">
         <div class="form">
-            <form action="log-in" method="post">
+            <form action="register" method="post">
                 <table>
                     <tr>
                         <td><h2>Register</h2></td>
@@ -76,8 +85,8 @@
         <div class="box">
         <p>Contacto: +34 658 31 58 15 </p> 
         <p>Siguenos en nuestras redes: 
-            <a href="https://www.instagram.com/?hl=es">Instagram</a>
-            <a href="https://www.facebook.com/?locale=es_ES">Facebook</a>
+            <a href="https://www.instagram.com/?hl=es" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/?locale=es_ES" target="_blank">Facebook</a>
         </p>
         </div>
     </footer>

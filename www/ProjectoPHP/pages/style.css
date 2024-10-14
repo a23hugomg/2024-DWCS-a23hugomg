@@ -21,6 +21,7 @@ body {
 .menu {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 10px;
   border-radius: 10px;
   margin-right: 30px;
@@ -38,7 +39,7 @@ body {
 .menu > a {
   color: black;
   text-decoration: none;
-  margin: 5px;
+  margin: 10px;
   background-color: #b0b0b0;
   text-align: center;
   border-radius: 10px;

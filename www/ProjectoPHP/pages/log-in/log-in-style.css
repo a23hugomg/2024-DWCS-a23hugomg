@@ -92,6 +92,10 @@ table {
   border-radius: 5px;
 }
 
+h3 {
+  color: red;
+}
+
 footer {
   display: flex;
   justify-content: center;

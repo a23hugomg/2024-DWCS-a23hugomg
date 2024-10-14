@@ -29,8 +29,8 @@
         <div class="box">
             <p>Contacto: +34 658 31 58 15 </p>
             <p>Siguenos en nuestras redes:
-                <a href="https://www.instagram.com/?hl=es">Instagram</a>
-                <a href="https://www.facebook.com/?locale=es_ES">Facebook</a>
+                <a href="https://www.instagram.com/?hl=es" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com/?locale=es_ES" target="_blank">Facebook</a>
             </p>
         </div>
     </footer>
