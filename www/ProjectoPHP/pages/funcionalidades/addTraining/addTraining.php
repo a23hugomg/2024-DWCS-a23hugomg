@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+session_start();
 function test_input($data)
 {
     $data = trim($data);
@@ -8,39 +10,30 @@ function test_input($data)
     return $data;
 }
 
-$exercise = $duration = $intensity = $date = $equipment = $calories = $comments = "";
-$exerciseError = $durationError = $intensityError = $dateError = "";
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!empty($_POST["exerciseType"]) && !empty($_POST["duration"]) && !empty($_POST["intensity"]) && !empty($_POST["workoutDate"])) {
 
-    if (empty($_POST["exerciseType"])) {
-        $exerciseError = "The exercise type is";
-    } else {
-        $exercise = test_input($_POST["exerciseType"]);
-        setcookie("exercise", $exercise, time() + (86400 * 30), "/");
-    }
+        $entrenamiento = array(
+            $_SESSION["exerciseType"] = htmlspecialchars($_POST["exerciseType"]),
+            $_SESSION["duration"] = htmlspecialchars($_POST["duration"]),
+            $_SESSION["intensity"] = htmlspecialchars($_POST["intensity"]),
+            $_SESSION["workoutDate"] = htmlspecialchars($_POST["workoutDate"]),
+            //$_SESSION[""] = htmlspecialchars($_POST[""]),
+            //$_SESSION[""] = htmlspecialchars($_POST[""]),
+            //$_SESSION[""] = htmlspecialchars($_POST[""]),
+        );
 
-    if (empty($_POST["duration"])) {
-        $durationError = "The duration is";
-    } else {
-        $duration = test_input($_POST["duration"]);
-        setcookie("duration", $duration, time() + (86400 * 30), "/");
-    }
+        if (!isset($_SESSION["entrenamientos"])) {
+            $_SESSION["entrenamientos"] = array();
+        }
 
-    if (empty($_POST["intensity"])) {
-        $intensityError = "The intensity is";
-    } else {
-        $intensity = test_input($_POST["intensity"]);
-        setcookie("intensity", $intensity, time() + (86400 * 30), "/");
-    }
+        $_SESSION["entrenamientos"][] = $entrenamiento;
 
-    if (empty($_POST["workoutDate"])) {
-        $dateError = "The date is";
+        header("Location: /ProjectoPHP/pages/funcionalidades/historyTraining/historyTraining.php");
+        exit();
     } else {
-        $date = test_input($_POST["workoutDate"]);
-        setcookie("workoutDate", $date, time() + (86400 * 30), "/");
+        echo "<h2 style=\"color:red; text-align: center;\">Please complete all the required fields.</h2>";
     }
-    header("Location: /ProjectoPHP/pages/funcionalidades/funcionalidades.php");
 }
 ?>
 <!DOCTYPE html>
@@ -50,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack</title>
-    <link rel="stylesheet" type="text/css" href="./addTraining.css?v=2" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./addTraining.css?v=1" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -67,17 +60,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <hr>
-    <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if ($exerciseError == "" && $durationError = "" && $intensityError = "" && $dateError = "") {
-                $_COOKIE['form'] = "filled";
-            }
-        }
-    ?>
     <div class="body">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+        <div class="buttons">
+            <a href="./addTraining.php">New Training</a>
+            <a href="../historyTraining/historyTraining.php">History</a>
+            <a href="../funcionalidades.php">Go Back</a>
+        </div>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <label for="exerciseType">Exercise Type:</label>
-            <select id="exerciseType" name="exerciseType">
+            <select id="exerciseType" name="exerciseType" value="<?php if (isset($_SESSION['exerciseType'])) echo $_SESSION['exerciseType']; ?>">
                 <option value="" disabled selected>Select an exercise type</option>
                 <option value="Running">Running</option>
                 <option value="Cycling">Cycling</option>
@@ -87,15 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <option value="HIIT">HIIT (High-Intensity Interval Training)</option>
                 <option value="Pilates">Pilates</option>
             </select>
-            <div class="error">
-                <?php echo $exerciseError;?>
-            </div>
 
             <label for="duration">Duration (in minutes):</label>
             <input type="number" id="duration" name="duration">
-            <div class="error">
-                <?php echo $durationError;?>
-            </div>
 
             <label for="intensity">Workout Intensity:</label>
             <select id="intensity" name="intensity">
@@ -104,15 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <option value="Moderate">Moderate</option>
                 <option value="High">High</option>
             </select>
-            <div class="error">
-                <?php echo $intensityError;?>
-            </div>
 
             <label for="workoutDate">Date of Workout:</label>
             <input type="date" id="workoutDate" name="workoutDate">
-            <div class="error">
-                <?php echo $dateError;?>
-            </div>
 
             <label for="equipment">Equipment Used (Optional):</label>
             <input type="text" id="equipment" name="equipment">
@@ -123,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="comments">Comments (Optional):</label>
             <textarea id="comments" name="comments" rows="3"></textarea>
 
-            <input type="submit" value="Submit Workout">
+            <input type="submit" value="Submit Workout" class="submit">
         </form>
     </div>
     <footer>

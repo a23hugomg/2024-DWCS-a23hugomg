@@ -86,60 +86,13 @@ hr {
     border-radius: 5px;
 }
 
-.subtitle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    font-size: 30px;
+.body>.buttons>a:nth-of-type(2) {
+    background-color: grey;
 }
 
-.imgs {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 5%;
-    padding-right: 5%;
-    padding-left: 5%;
-}
-
-.imgs>img {
-    height: 400px;
-    width: auto;
-}
-
-.form {
-    color: white;
+.history {
     display: flex;
     flex-direction: column;
-}
-
-table {
-    font-size: 20px;
-}
-
-.createAccount {
-    color: rgb(0, 140, 255);
-}
-
-.logInButton {
-    background-color: rgb(0, 140, 255);
-    border-radius: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 10px;
-}
-
-.createAccount:hover {
-    color: blueviolet;
-    background-color: black;
-}
-
-.logInButton:hover {
-    background-color: rgb(0, 255, 0);
-    border-radius: 5px;
 }
 
 footer {

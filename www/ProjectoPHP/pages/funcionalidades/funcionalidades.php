@@ -32,7 +32,7 @@ session_start();
             <a href="../log-out/logout.php">Log out</a>
         </div>
         <div class="subtitle">
-            <h3>What you want to do today?</h3>
+            <h3>What do you want to do today?</h3>
         </div>
     </div>
     <footer>

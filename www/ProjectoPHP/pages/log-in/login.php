@@ -19,11 +19,11 @@ $users = [
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = test_input($_POST['username']);
     $password = test_input($_POST['password']);
-    
+
     if (isset($users['usuario']) == $username && $users[$username] == $password) {
         $_SESSION['username'] = $username;
         header("Location: /ProjectoPHP/pages/funcionalidades/funcionalidades.php");
-        exit();        
+        exit();
     } else {
         $err = true;
     }
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <hr>
     <div class="body">
         <div class="form">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <table>
                     <tr>
                         <td>
@@ -84,16 +84,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                     <tr class=" espacio"></tr>
                     <tr>
-                        <td><input type="submit" value="Log in" name="logInButton" class="logInButton   "></td>
+                        <td><input type="submit" value="Log in" name="logInButton" class="logInButton"></td>
                     </tr>
                 </table>
             </form>
-            <?php if(isset($_GET["redirigido"])){
-        echo "<h3>Please introduce login to continue </h3>";
-    }?>
-    <?php if(isset($err) and $err == true){
-        echo "<h3> Please check user or password </h3>";
-    }?>
+            <?php if (isset($_GET["redirigido"])) {
+                echo "<h3>Please introduce login to continue </h3>";
+            } ?>
+            <?php if (isset($err) and $err == true) {
+                echo "<h3> Please check user or password </h3>";
+            } ?>
         </div>
     </div>
 
