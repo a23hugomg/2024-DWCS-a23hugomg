@@ -5,7 +5,7 @@ function recorrerEntrenamientos(array $entrenamientos)
 {
     if (!empty($entrenamientos)) {
         foreach ($entrenamientos as $entrenamiento) {
-            echo "<ul>Entrenamiento día: " . $entrenamiento["workoutDate"]."&nbsp;";
+            echo "<ul>Entrenamiento día: " . $entrenamiento["workoutDate"] . "&nbsp;";
             mostrarEntrenamiento($entrenamiento);
             echo "</ul>";
         }
@@ -16,18 +16,18 @@ function recorrerEntrenamientos(array $entrenamientos)
 
 function mostrarEntrenamiento(array $entrenamiento)
 {
-    echo "<strong>Exercise:</strong>" . $entrenamiento["exerciseType"] . "&nbsp";
-    echo "<strong>Minutes:</strong>" . $entrenamiento["duration"] . "&nbsp";
-    echo "<strong>Intensity:</strong>" . $entrenamiento["intensity"] . "&nbsp";
-    echo "<strong>Fecha:</strong>" . $entrenamiento["workoutDate"] . "&nbsp";
-    if (!empty($entrenamiento["equipment"]) ) {
-        echo "<strong>Equiped:</strong>" . $entrenamiento["equipment"] . "&nbsp";
+    echo "<li><strong>Exercise:</strong>" . $entrenamiento["exerciseType"] . "</li>";
+    echo "<li><strong>Minutes:</strong>" . $entrenamiento["duration"] . "</li>";
+    echo "<li><strong>Intensity:</strong>" . $entrenamiento["intensity"] . "</li>";
+    echo "<li><strong>Fecha:</strong>" . $entrenamiento["workoutDate"] . "</li>";
+    if (!empty($entrenamiento["equipment"])) {
+        echo "<li><strong>Equiped:</strong>" . $entrenamiento["equipment"] . "</li>";
     }
     if (!empty($entrenamiento["calories"])) {
-        echo "<strong>Calories:</strong>" . $entrenamiento["calories"] . "&nbsp";
+        echo "<li><strong>Calories:</strong>" . $entrenamiento["calories"] . "</li>";
     }
     if (!empty($entrenamiento["comments"])) {
-       echo "<strong>Comments:</strong>" . $entrenamiento["comments"] . "&nbsp";
+        echo "<li><strong>Comments:</strong>" . $entrenamiento["comments"] . "</li>";
     }
 }
 ?>
@@ -38,20 +38,20 @@ function mostrarEntrenamiento(array $entrenamiento)
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack</title>
-    <link rel="stylesheet" type="text/css" href="./historyTraining-style.css?v=1" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./historyTraining-style.css?v=3" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
     <div class="header">
         <div class="logo">
-            <img src="../../../img/gimnasio (1).png" height="100px" />
+            <img src="../../../img/gimnasio-blanco.png" height="100px" />
         </div>
         <div class="title">
             <h1>FitTrack</h1>
         </div>
         <div class="menu">
-            <a href="../../log-out/logout.php" sr><img src="../../../img/cerrar-sesion.png" /></a>
+            <a href="../../log-out/logout.php" sr><img src="../../../img/cerrar-sesion-blanco.png" /></a>
         </div>
     </div>
     <hr>

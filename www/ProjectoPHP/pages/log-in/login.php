@@ -36,20 +36,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack</title>
-    <link rel="stylesheet" type="text/css" href="./log-in-style.css?v=3" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./log-in-style.css?v=1" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
     <div class="header">
         <div class="logo">
-            <img src="../../img/gimnasio (1).png" height="100px" />
+            <img src="../../img/gimnasio-blanco.png" height="100px" />
         </div>
         <div class="title">
             <h1>FitTrack</h1>
         </div>
         <div class="menu">
-            <a href="../index.php" sr><img src="../../img/hogar.png" /></a>
+            <a href="../index.php" sr><img src="../../img/casa_blanco.png" /></a>
         </div>
     </div>
     <hr>

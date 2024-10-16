@@ -11,10 +11,10 @@ function test_input($data)
 }
 
 $exerciseType = $duration = $intensity = $workoutDate = $equipment = $calories = $comments = "";
-$error ="";
+$error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $exerciseType = isset($_POST["exerciseType"])? test_input($_POST["exerciseType"]) : "";
+    $exerciseType = isset($_POST["exerciseType"]) ? test_input($_POST["exerciseType"]) : "";
     $duration = test_input($_POST["duration"]);
     $intensity = isset($_POST["intensity"]) ? test_input($_POST["intensity"]) : "";
     $workoutDate = test_input($_POST["workoutDate"]);
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $calories = test_input($_POST["calories"]);
     $comments = test_input($_POST["comments"]);
 
-    if ((!empty($exerciseType))&& !empty($duration) && !empty($intensity) && !empty($workoutDate)) {
+    if ((!empty($exerciseType)) && !empty($duration) && !empty($intensity) && !empty($workoutDate)) {
 
         $entrenamiento = [
             "exerciseType" => $exerciseType,
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $_SESSION["entrenamientos"][] = $entrenamiento;
-       
+
         header("Location: /ProjectoPHP/pages/funcionalidades/historyTraining/historyTraining.php");
         exit();
     } else {
@@ -61,13 +61,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="header">
         <div class="logo">
-            <img src="../../../img/gimnasio (1).png" height="100px" />
+            <img src="../../../img/gimnasio-blanco.png" height="100px" />
         </div>
         <div class="title">
             <h1>FitTrack</h1>
         </div>
         <div class="menu">
-            <a href="../../index.php" sr><img src="../../../img/cerrar-sesion.png" /></a>
+            <a href="../../index.php" sr><img src="../../../img/cerrar-sesion-blanco.png" /></a>
         </div>
     </div>
     <hr>
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h2 style=\"color:red; text-align: center;\">$error</h2>";
     ?>
     <div class="body">
-                    
+
         <div class="buttons">
             <a href="./addTraining.php">New Training</a>
             <a href="../historyTraining/historyTraining.php">History</a>
@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <label for="comments">Comments (Optional):</label>
             <textarea id="comments" name="comments" rows="3"></textarea>
-            
+
             <input type="submit" value="Submit Workout" class="submit">
         </form>
     </div>

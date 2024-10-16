@@ -8,20 +8,20 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack</title>
-    <link rel="stylesheet" type="text/css" href="./funcionalidades.css?v=2 media=" screen" />
+    <link rel="stylesheet" type="text/css" href="./funcionalidades.css?v=2 " media=" screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
     <div class="header">
         <div class="logo">
-            <img src="../../img/gimnasio (1).png" height="100px" />
+            <img src="../../img/gimnasio-blanco.png" height="100px" />
         </div>
         <div class="title">
             <h1>FitTrack</h1>
         </div>
         <div class="menu">
-            <a href="../log-out/logout.php" sr><img src="../../img/cerrar-sesion.png" /></a>
+            <a href="../log-out/logout.php" sr><img src="../../img/cerrar-sesion-blanco.png" /></a>
         </div>
     </div>
     <hr>
@@ -29,7 +29,7 @@ session_start();
         <div class="buttons">
             <a href="./addTraining/addTraining.php">New Training</a>
             <a href="./historyTraining/historyTraining.php">History</a>
-            <a href="../log-out/logout.php">Log out</a>
+            <!-- <a href="../log-out/logout.php">Log out</a> -->
         </div>
         <div class="subtitle">
             <h3>What do you want to do today?</h3>
