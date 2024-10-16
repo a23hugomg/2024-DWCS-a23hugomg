@@ -10,29 +10,40 @@ function test_input($data)
     return $data;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST["exerciseType"]) && !empty($_POST["duration"]) && !empty($_POST["intensity"]) && !empty($_POST["workoutDate"])) {
+$exerciseType = $duration = $intensity = $workoutDate = $equipment = $calories = $comments = "";
+$error ="";
 
-        $entrenamiento = array(
-            $_SESSION["exerciseType"] = htmlspecialchars($_POST["exerciseType"]),
-            $_SESSION["duration"] = htmlspecialchars($_POST["duration"]),
-            $_SESSION["intensity"] = htmlspecialchars($_POST["intensity"]),
-            $_SESSION["workoutDate"] = htmlspecialchars($_POST["workoutDate"]),
-            //$_SESSION[""] = htmlspecialchars($_POST[""]),
-            //$_SESSION[""] = htmlspecialchars($_POST[""]),
-            //$_SESSION[""] = htmlspecialchars($_POST[""]),
-        );
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $exerciseType = isset($_POST["exerciseType"])? test_input($_POST["exerciseType"]) : "";
+    $duration = test_input($_POST["duration"]);
+    $intensity = isset($_POST["intensity"]) ? test_input($_POST["intensity"]) : "";
+    $workoutDate = test_input($_POST["workoutDate"]);
+    $equipment = test_input($_POST["equipment"]);
+    $calories = test_input($_POST["calories"]);
+    $comments = test_input($_POST["comments"]);
+
+    if ((!empty($exerciseType))&& !empty($duration) && !empty($intensity) && !empty($workoutDate)) {
+
+        $entrenamiento = [
+            "exerciseType" => $exerciseType,
+            "duration" => $duration,
+            "intensity" => $intensity,
+            "workoutDate" => $workoutDate,
+            "equipment" => $equipment,
+            "calories" => $calories,
+            "comments" => $comments
+        ];
 
         if (!isset($_SESSION["entrenamientos"])) {
-            $_SESSION["entrenamientos"] = array();
+            $_SESSION["entrenamientos"] = [];
         }
 
         $_SESSION["entrenamientos"][] = $entrenamiento;
-
+       
         header("Location: /ProjectoPHP/pages/funcionalidades/historyTraining/historyTraining.php");
         exit();
     } else {
-        echo "<h2 style=\"color:red; text-align: center;\">Please complete all the required fields.</h2>";
+        $error = "Please complete all the required fields.";
     }
 }
 ?>
@@ -60,7 +71,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <hr>
+    <?php if (!empty($error))
+        echo "<h2 style=\"color:red; text-align: center;\">$error</h2>";
+    ?>
     <div class="body">
+                    
         <div class="buttons">
             <a href="./addTraining.php">New Training</a>
             <a href="../historyTraining/historyTraining.php">History</a>
@@ -68,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <label for="exerciseType">Exercise Type:</label>
-            <select id="exerciseType" name="exerciseType" value="<?php if (isset($_SESSION['exerciseType'])) echo $_SESSION['exerciseType']; ?>">
+            <select id="exerciseType" name="exerciseType">
                 <option value="" disabled selected>Select an exercise type</option>
                 <option value="Running">Running</option>
                 <option value="Cycling">Cycling</option>
@@ -101,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <label for="comments">Comments (Optional):</label>
             <textarea id="comments" name="comments" rows="3"></textarea>
-
+            
             <input type="submit" value="Submit Workout" class="submit">
         </form>
     </div>

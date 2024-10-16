@@ -1,28 +1,34 @@
 <?php
 session_start();
 
-function recorrerEntrenamientos($entrenamientos)
+function recorrerEntrenamientos(array $entrenamientos)
 {
     if (!empty($entrenamientos)) {
         foreach ($entrenamientos as $entrenamiento) {
-            echo "<li>Entrenamiento día: " . $_SESSION["entrenamientos"]["workoutDate"];
+            echo "<ul>Entrenamiento día: " . $entrenamiento["workoutDate"]."&nbsp;";
             mostrarEntrenamiento($entrenamiento);
-            echo "</li";
+            echo "</ul>";
         }
     } else {
         echo "<h2>There are no workouts recorded.</h2>";
     }
 }
 
-function mostrarEntrenamiento($entrenamiento)
+function mostrarEntrenamiento(array $entrenamiento)
 {
-    echo "<ul>Exercise:" . $_SESSION["entrenamientos"]["exerciseType"] . "</ul>";
-    echo "<ul>Minutes:" . $_SESSION["duration"] . "</ul>";
-    echo "<ul>Intensity:" . $_SESSION["intensity"] . "</ul>";
-    echo "<ul>Fecha:" . $_SESSION["workoutDate"] . "</ul>";
-    //    echo "<ul>Equiped:" . $_SESSION[""] . "</ul>";
-    //    echo "<ul>Calories:" . $_SESSION[""] . "</ul>";
-    //    echo "<ul>Comments:" . $_SESSION[""] . "</ul>";
+    echo "<strong>Exercise:</strong>" . $entrenamiento["exerciseType"] . "&nbsp";
+    echo "<strong>Minutes:</strong>" . $entrenamiento["duration"] . "&nbsp";
+    echo "<strong>Intensity:</strong>" . $entrenamiento["intensity"] . "&nbsp";
+    echo "<strong>Fecha:</strong>" . $entrenamiento["workoutDate"] . "&nbsp";
+    if (!empty($entrenamiento["equipment"]) ) {
+        echo "<strong>Equiped:</strong>" . $entrenamiento["equipment"] . "&nbsp";
+    }
+    if (!empty($entrenamiento["calories"])) {
+        echo "<strong>Calories:</strong>" . $entrenamiento["calories"] . "&nbsp";
+    }
+    if (!empty($entrenamiento["comments"])) {
+       echo "<strong>Comments:</strong>" . $entrenamiento["comments"] . "&nbsp";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -56,16 +62,17 @@ function mostrarEntrenamiento($entrenamiento)
             <a href="../funcionalidades.php">Go Back</a>
         </div>
         <div class="history">
-            <?php
-            if (isset($_SESSION["entrenamientos"])) {
-                echo "<h2>Lista de entrenamientos:</h2>";
-                echo "llegue";
-                $array = $_SESSION["entrenamientos"];
-                recorrerEntrenamientos($array);
-            } else {
-                echo "No hay datos para mostrar.";
-            }
-            ?>
+            <h2>Entrainaments:</h2>
+            <div class="entrenamientos">
+                <?php
+                if (isset($_SESSION["entrenamientos"])) {
+                    $array = $_SESSION["entrenamientos"];
+                    recorrerEntrenamientos($array);
+                } else {
+                    echo "<h2>There are no workouts recorded.</h2>";
+                }
+                ?>
+            </div>
         </div>
     </div>
     <footer>

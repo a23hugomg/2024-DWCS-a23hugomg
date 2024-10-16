@@ -64,10 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                     <tr class="espacio"></tr>
                     <tr>
-                        <td>or <a href="../register/register.php" class="createAccount">create an account</a></td>
-                    </tr>
-                    <tr class="espacio"></tr>
-                    <tr>
                         <td>Username</td>
                     </tr>
                     <tr class="espacio"></tr>
