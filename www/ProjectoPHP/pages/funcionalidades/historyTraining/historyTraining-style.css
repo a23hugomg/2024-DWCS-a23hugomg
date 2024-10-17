@@ -38,7 +38,7 @@ body {
   height: 104px;
 }
 
-.menu>a>img {
+.menu > a > img {
   color: black;
   text-decoration: none;
   /*background-color: #b0b0b0;*/
@@ -65,14 +65,14 @@ hr {
   margin-right: 10%;
 }
 
-.body>.buttons {
+.body > .buttons {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 5%;
 }
 
-.body>.buttons>a {
+.body > .buttons > a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,7 +87,7 @@ hr {
   border-radius: 5px;
 }
 
-.body>.buttons>a:nth-of-type(2) {
+.body > .buttons > a:nth-of-type(2) {
   background-color: grey;
 }
 
@@ -99,7 +99,7 @@ hr {
   margin-left: 10%;
 }
 
-.history>h2 {
+.history > h2 {
   display: flex;
   align-items: center;
   text-align: left;
@@ -108,7 +108,7 @@ hr {
   height: 50px;
 }
 
-.history>.entrenamientos {
+.history > .entrenamientos {
   display: flex;
   flex-direction: column;
   align-content: space-between;
@@ -120,7 +120,7 @@ hr {
   gap: 20px;
 }
 
-.history>.entrenamientos>h2 {
+.history > .entrenamientos > h2 {
   width: 700px;
   margin-top: 200px;
   text-align: center;
@@ -156,15 +156,92 @@ footer {
   height: 100px;
 }
 
-.box>p {
+.box > p {
   margin-left: 10%;
   margin-right: 10%;
 }
 
-.box>p>a {
+.box > p > a {
   color: black;
 }
 
-.box>p>a:hover {
+.box > p > a:hover {
   color: blue;
+}
+
+/*Respsive*/
+@media screen and (max-width: 600px) {
+  .header {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .menu {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .body {
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: auto;
+  }
+
+  .body > .buttons {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .body > .buttons > a {
+    width: 50%;
+    height: auto;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .history {
+    margin-left: 5%; /* Ajusta los márgenes para móviles */
+    margin-right: 5%;
+    height: auto;
+  }
+
+  .history > .entrenamientos {
+    grid-template-columns: 1fr;
+    width: 95%;
+    align-self: center;
+  }
+
+  .history > .entrenamientos > h2 {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  ul {
+    padding: 5px;
+  }
+
+  footer {
+    height: auto;
+  }
+
+  .box {
+    flex-direction: column; /* Los elementos dentro de .box se apilan en una columna */
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .box > p {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center; /* Centra el texto dentro de .box */
+  }
 }

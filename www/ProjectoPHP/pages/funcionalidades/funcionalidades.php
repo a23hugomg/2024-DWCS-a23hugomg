@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack</title>
-    <link rel="stylesheet" type="text/css" href="./funcionalidades.css?v=2 " media=" screen" />
+    <link rel="stylesheet" type="text/css" href="./funcionalidades.css?v=10" media=" screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -32,7 +32,7 @@ session_start();
             <!-- <a href="../log-out/logout.php">Log out</a> -->
         </div>
         <div class="subtitle">
-            <h3>What do you want to do today?</h3>
+            <h3>What do you want to do?</h3>
         </div>
     </div>
     <footer>

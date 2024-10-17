@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FitTrack</title>
-  <link rel="stylesheet" type="text/css" href="./style.css?v=1" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./style.css?v=10" media="screen" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
   <div class="header">
     <div class="logo">
-      <img src="../img/gimnasio-blanco.png" height="100px" />
+      <img src="../img/gimnasio-blanco.png"/>
     </div>
     <div class="title">
       <h1>FitTrack</h1>
