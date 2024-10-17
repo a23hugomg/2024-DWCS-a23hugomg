@@ -12,7 +12,7 @@
 <body>
   <div class="header">
     <div class="logo">
-      <img src="../img/gimnasio-blanco.png"/>
+      <img src="../img/gimnasio-blanco.png" />
     </div>
     <div class="title">
       <h1>FitTrack</h1>

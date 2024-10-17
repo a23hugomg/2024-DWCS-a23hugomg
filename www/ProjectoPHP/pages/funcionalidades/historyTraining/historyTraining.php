@@ -5,7 +5,7 @@ function recorrerEntrenamientos(array $entrenamientos)
 {
     if (!empty($entrenamientos)) {
         foreach ($entrenamientos as $entrenamiento) {
-            echo "<ul>Entrenamiento día: " . $entrenamiento["workoutDate"] . "&nbsp;";
+            echo "<ul>Workout Day: " . $entrenamiento["workoutDate"] . "&nbsp;";
             mostrarEntrenamiento($entrenamiento);
             echo "</ul>";
         }
@@ -38,7 +38,7 @@ function mostrarEntrenamiento(array $entrenamiento)
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack</title>
-    <link rel="stylesheet" type="text/css" href="./historyTraining-style.css?v=10" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./historyTraining-style.css?v=1" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 

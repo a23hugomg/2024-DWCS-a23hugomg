@@ -38,7 +38,7 @@ body {
   height: 104px;
 }
 
-.menu > a > img {
+.menu>a>img {
   color: black;
   text-decoration: none;
   /*background-color: #b0b0b0;*/
@@ -65,14 +65,14 @@ hr {
   margin-right: 10%;
 }
 
-.body > .buttons {
+.body>.buttons {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 5%;
 }
 
-.body > .buttons > a {
+.body>.buttons>a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,7 +87,7 @@ hr {
   border-radius: 5px;
 }
 
-.body > .buttons > a:first-of-type {
+.body>.buttons>a:first-of-type {
   background-color: grey;
 }
 
@@ -99,7 +99,7 @@ form {
   font-size: 18px;
 }
 
-form > .submit {
+form>.submit {
   width: 150px;
   height: 30px;
   margin-top: 10px;
@@ -131,16 +131,16 @@ footer {
   height: 100px;
 }
 
-.box > p {
+.box>p {
   margin-left: 10%;
   margin-right: 10%;
 }
 
-.box > p > a {
+.box>p>a {
   color: black;
 }
 
-.box > p > a:hover {
+.box>p>a:hover {
   color: blue;
 }
 
@@ -169,13 +169,13 @@ footer {
     height: auto;
   }
 
-  .body > .buttons {
+  .body>.buttons {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .body > .buttons > a {
+  .body>.buttons>a {
     width: 50%;
     height: auto;
     align-items: center;
@@ -189,14 +189,15 @@ footer {
     font-size: 16px;
   }
 
-  form > .submit {
+  form>.submit {
     width: 50%;
     margin-left: 0;
     align-self: center;
   }
 
   footer {
-    height: auto; /* Ajusta la altura del footer */
+    height: auto;
+    /* Ajusta la altura del footer */
   }
 
   .box {
