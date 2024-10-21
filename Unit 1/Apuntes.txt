@@ -1,0 +1,20 @@
+--Viernes 13/9
+	Diferencia entre librerias y frameworks.
+	Django.
+	http protocolo, metodos
+	APIs
+--Lunes 16/9
+	Microframeworks
+	Web Frameworks
+	ORM (Mapeamento Objeto-Relacional)
+	AWS, Heroku
+--
+	
+
+
+
+
+-------------
+Conceptos basicos(escrito)
+php web - mes y medio (proyecto "simple", proba practica)
+phyton - mes y medio 
