@@ -8,9 +8,7 @@
   <body>
     <h2>Home page</h2>
 
-    <p>{{ password }}</p>
-
-    <form action="">
+    <form action="{% url 'password' %}">
       <select name="length">
         <option value="6">6 chars long</option>
         <option value="7">7 chars long</option>
