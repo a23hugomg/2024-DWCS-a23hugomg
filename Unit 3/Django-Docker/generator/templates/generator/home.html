@@ -6,14 +6,35 @@
     <title>Password Generate</title>
   </head>
   <body>
-    <h2>Home page</h2>
+    <h2>Password generator</h2>
 
     <form action="{% url 'password' %}">
       <select name="length">
         <option value="6">6 chars long</option>
         <option value="7">7 chars long</option>
         <option value="8">8 chars long</option>
+        <option value="9">9 chars long</option>
+        <option value="10">10 chars long</option>
+        <option value="11">11 chars long</option>
+        <option value="12" selected>12 chars long</option>
+        <option value="13">13 chars long</option>
+        <option value="14">14 chars long</option>
+        <option value="15">15 chars long</option>
+        <option value="16">16 chars long</option>
+        <option value="17">17 chars long</option>
+        <option value="18">18 chars long</option>
+        <option value="19">19 chars long</option>
+        <option value="20">20 chars long</option>
+        <option value="21">21 chars long</option>
+        <option value="22">22 chars long</option>
+        <option value="23">23 chars long</option>
       </select>
+
+      <div><input name="uppercase" type="checkbox" />Uppercase</div>
+      <div><input name="numbers" type="checkbox" />Numbers</div>
+      <div>
+        <input name="special" type="checkbox" id="ultimo" />Special Characters
+      </div>
 
       <input type="submit" value="Generate password" />
     </form>
