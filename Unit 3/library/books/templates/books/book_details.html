@@ -1,0 +1,22 @@
+{% extends "books/base.html" %} {% load static %} {% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img
+        src="{{ book.image.url }}"
+        class="img-fluid shadow-sm"
+        alt="{{ book.title }}"
+        style="max-height: 400px; object-fit: cover"
+      />
+    </div>
+    <div class="col-md-6">
+      <h1 class="mb-3">{{ book.title }}</h1>
+      <p class="text-muted">
+        <strong>Publicado:</strong> {{ book.publication_date|date:"j F, Y" }}
+      </p>
+      <p class="fs-5">{{ book.description }}</p>
+      <p class="text-primary fw-bold fs-4">Precio: {{ book.price }}€</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

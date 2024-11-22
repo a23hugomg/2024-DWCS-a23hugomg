@@ -1,61 +1,43 @@
 {% extends "books/base.html" %} {% load static %} {% block content %}
-<div class="container">
-  <div class="section-title">Libros Recomendados</div>
-  <div class="row">
-    <!-- Card 1 -->
-    <div class="col-md-4 mb-4">
-      <div class="card">
-        <img
-          src="{% static 'books/book1.jpg' %}"
-          class="card-img-top"
-          alt="Book 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title">El Gran Libro</h5>
-          <p class="card-text">
-            Un emocionante viaje a través de las páginas de un clásico de la
-            literatura.
-          </p>
-          <a href="#" class="btn btn-primary">Ver más</a>
-        </div>
-      </div>
-    </div>
-    <!-- Card 2 -->
-    <div class="col-md-4 mb-4">
-      <div class="card">
-        <img
-          src="{% static 'books/book2.jpg' %}"
-          class="card-img-top"
-          alt="Book 2"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Misterios Inesperados</h5>
-          <p class="card-text">
-            Un thriller lleno de giros inesperados que mantendrán tu atención
-            hasta el final.
-          </p>
-          <a href="#" class="btn btn-primary">Ver más</a>
-        </div>
-      </div>
-    </div>
-    <!-- Card 3 -->
-    <div class="col-md-4 mb-4">
-      <div class="card">
-        <img
-          src="{% static 'books/book3.jpg' %}"
-          class="card-img-top"
-          alt="Book 3"
-        />
-        <div class="card-body">
-          <h5 class="card-title">La Ciencia del Futuro</h5>
-          <p class="card-text">
-            Una obra fascinante que explora los avances más sorprendentes en el
-            campo de la ciencia.
-          </p>
-          <a href="#" class="btn btn-primary">Ver más</a>
-        </div>
-      </div>
-    </div>
+<div class="container-fluid p-0 position-relative">
+  <img
+    src="{% static 'books/libros.jpg' %}"
+    class="img-fluid w-100 custom-height"
+    alt="Librería de libros"
+  />
+  <div class="text-overlay">
+    <h1>¡Welcome to the library!</h1>
+    <p>Explore our book collections and find your next favorite.</p>
   </div>
 </div>
-{%endblock%}
+<div class="container mt-4">
+  <h2 class="section-title text-center mb-4">Libros Recomendados</h2>
+  <div class="row">
+    {% for book in books %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img
+          src="{{ book.image.url }}"
+          class="card-img-top"
+          alt="{{ book.title }}"
+          style="height: 200px; object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ book.title }}</h5>
+          <p class="card-text">{{ book.description }}</p>
+          <a
+            src="{% url 'book_details:books_details' book.id %}"
+            class="btn btn-primary btn-sm mb-3"
+            >Leer más</a
+          >
+          <p><strong>Precio:</strong> {{ book.price }}€</p>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Publicado: {{ book.publication_date|date:"j F, Y" }}</small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

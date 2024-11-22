@@ -67,19 +67,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid p-0 position-relative">
-      <img
-        src="{% static 'books/libros.jpg' %}"
-        class="img-fluid w-100 custom-height"
-        alt="Librería de libros"
-      />
-      <div class="text-overlay">
-        <h1>¡Welcome to the library!</h1>
-        <p>Explore our book collections and find your next favorite.</p>
-      </div>
-    </div>
-
-    <div class="container">{% block content %}{% endblock %}</div>
+    <div class="container-fluid">{% block content %}{% endblock %}</div>
 
     <footer>
       <p>&copy; 2024 Library. Todos los derechos reservados.</p>
