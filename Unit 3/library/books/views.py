@@ -9,3 +9,8 @@ def home(request):
 def book_detail(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     return render(request, 'books/book_detail.html', {'book': book})
+
+def book_search(request):
+    query = request.GET.get('q', '')  # Obtén el término de búsqueda
+    books = Book.objects.filter(title__icontains=query) if query else Book.objects.all()
+    return render(request, 'books/book_search.html', {'books': books, 'query': query})

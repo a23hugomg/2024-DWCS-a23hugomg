@@ -57,12 +57,13 @@
                 <a class="nav-link" href="#">Authors</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
+            <form class="d-flex" method="get" action="{% url 'book:search' %}">
               <input
                 class="form-control me-2"
                 type="search"
                 placeholder="Search books"
                 aria-label="Search"
+                value="{{ query|default:'' }}"
               />
               <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
