@@ -1,19 +1,6 @@
 {% extends "books/base.html" %} {% block content %}
 <div class="container mt-4">
-  <h2 class="text-center">Buscar Libros</h2>
-  <form method="get" action="{% url 'book:search' %}" class="mb-4">
-    <div class="input-group">
-      <input
-        type="text"
-        name="q"
-        class="form-control"
-        placeholder="Buscar por título..."
-        value="{{ query }}"
-      />
-      <button type="submit" class="btn btn-primary">Buscar</button>
-    </div>
-  </form>
-
+  <h2 class="text-center">Búsqueda de Libros</h2>
   {% if books %}
   <h4 class="mb-4">Resultados para "{{ query }}":</h4>
   <div class="row">
