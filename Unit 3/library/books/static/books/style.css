@@ -31,22 +31,6 @@
   border-color: black;
 }
 
-/* .btn-outline-dark {
-  border-color: #000;
-  color: #000;
-  opacity: 1;
-  transform: scale(0.95);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.btn-outline-dark:hover {
-  background-color: #000;
-  color: #fff;
-  border-color: #000;
-  opacity: 1;
-  transform: scale(1);
-} */
-
 /* Body */
 .section-title {
   font-size: 2rem;
