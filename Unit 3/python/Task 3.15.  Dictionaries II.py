@@ -5,7 +5,7 @@ with open('catalog.json','r') as file:
 
 # print(isinstance(diccionario, dict))
 
-# Diccionario entero
+# # Diccionario entero
 for key, value in diccionario.items():
     if isinstance(value, dict):
         print(f"{key}:")
@@ -20,6 +20,15 @@ for key, value in diccionario.items():
                 print(f"  {subkey}: {subvalue}")
 
 
-# Titulo de los libros
-# for book in diccionario['catalog']['book']:
-#     print(f"{book['title']}")
+# # Titulo de los libros
+for book in diccionario['catalog']['book']:
+      print(f"{book['title']}")
+     
+# Libro por ID
+def findValue(dict, id):
+    for book in dict['catalog']["book"]:
+        if book["id"] == id:
+            for k,v in book.items():
+                print(f"{k}: {v}")
+
+findValue(diccionario, 4)
