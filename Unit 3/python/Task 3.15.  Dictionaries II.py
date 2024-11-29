@@ -5,7 +5,7 @@ with open('catalog.json','r') as file:
 
 # print(isinstance(diccionario, dict))
 
-# # Diccionario entero
+# Diccionario entero
 for key, value in diccionario.items():
     if isinstance(value, dict):
         print(f"{key}:")

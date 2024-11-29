@@ -15,19 +15,19 @@ class Product():
       self.image = image
       
     def __str__(self):
-					return f"Name: {self.name}\nDescription: {self.description} Price: ${self.price:.2f}Image: {self.image}"
+					return f"Name: {self.name}\nDescription: {self.description}\nPrice: ${self.price:.2f}\nImage: {self.image}"
 
 class Order():
-		def __init__(self, date, productos, client):
+		def __init__(self, date, products, client):
 			self.date = date
-			self.productos = productos
+			self.products = products
 			self.client = client
   
 		def getTotal(self):
-					return sum(product.price for product in self.productos)
+					return sum(product.price for product in self.products)
    
 		def __str__(self):
-						products_str = "\n\n".join(str(product) for product in self.productos)
+						products_str = "\n\n".join(str(product) for product in self.products)
 						return f"Date: {self.date}\nProductos:\n{products_str}\n\nCliente:\n{self.client}\n\nPrecio Total: {self.getTotal()}€"
 
 
