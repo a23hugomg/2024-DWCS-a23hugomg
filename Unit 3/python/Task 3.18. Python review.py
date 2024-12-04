@@ -28,30 +28,57 @@ class Library():
 
     def listBooks(self):
         for book in self.books:
-            print(book)
+            if book.status == True:
+                print(book)
             
     def borrowBook(self, title):
-        try:
-            for book in self.books:
-                if book == title:
-                    self.books.remove(book)
-                    print(f"El libro {book} ha sido eliminado.")
-                    return 
+        for book in self.books:
+            if book.title == title:
+                if book.status == False:
+                    raise BookNotAvailableException("El libro está prestado")
                 else:
-                    pass
-                raise BookNotAvailableException("El libro no existe")
-        except BookNotAvailableException as error:
-            print(error)
+                    book.status = False
+                    print(f"El libro {book.title} ha sido prestado")
+                    return
+        raise BookNotFoundException("El libro no existe")
             
     def returnBook(self, title):
-        try:
-            for book in self.books:
-                if book == title:
-                    print(book)
+        for book in self.books:
+            if book.title == title:
+                if book.status == False:
+                    book.status = True
+                    print(f"El libro {book.title} ha sido devuelto.")
                     return
-                else:
-                    pass
-                raise BookNotFoundException("El libro no existe")
-        except BookNotFoundException as e:
-            print(e)
+        raise BookNotFoundException("El libro no existe")
+
+
+
+book1 = Book("Book1", "1", True)
+book2 = Book("Book2", "2", False)
+book3 = Book("Book3", "3", True)
+
+books = []
+books.append(book1)
+books.append(book2)
+books.append(book3)
+
+library = Library(books)
+
+library.listBooks()
+
+try:
+    library.borrowBook("Book3")
+except BookNotFoundException as e:
+    print(e)
+except BookNotAvailableException as e:
+    print(e)
     
+try:
+    library.returnBook("Book3")
+    library.returnBook("Book2")
+    library.returnBook("Book1")
+except BookNotFoundException as e:
+    print(e)
+    
+    
+library.listBooks()
