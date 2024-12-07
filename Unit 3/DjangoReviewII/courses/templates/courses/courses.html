@@ -1,0 +1,11 @@
+{% extends 'courses/base.html' %} {% load static %} {% block content %} 
+<div class="d-flex flex-row">
+    {% for course in courses %}
+        <div class="card d-flex flex-column">
+            <h2>{{ course.name }}</h2>
+            <h4>{{ course.description }}</h4>
+            <img src="{{ course.image.url }}" width="250px">
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

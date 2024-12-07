@@ -1,2 +1,6 @@
-{% extends 'courses/base.html' %} {% block content %} All the content of the
-courses {% endblock %}
+{% extends 'courses/base.html' %} {% load static %} {% block content %} 
+<div class="d-flex flex-column align-items-center ">
+    <h2 class="mb-4">This is the home page!</h2>
+    <img src="{% static 'courses/Home.jpg' %}" alt="Foto de una casa" width="200px">
+</div>
+{% endblock %}
