@@ -1,2 +1,22 @@
-{% extends 'courses/base.html' %} {% block content %} All the content of the
-registration {% endblock %}
+{% extends 'courses/base.html' %} {% block content %} 
+
+<div class="container mt-5">
+    <h2>Formulario de Registro</h2>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <p>
+            <label for="id_name">Nombre:</label>
+            <input type="text" name="name" maxlength="100" id="id_name">
+        </p>
+        <p>
+            <label for="id_surname">Apellido:</label>
+            <input type="text" name="surname" maxlength="100" id="id_surname">
+        </p>
+        <p>
+            <label for="id_age">Edad:</label>
+            <input type="number" name="age" id="id_age" min="18">
+        </p>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</div>
+{% endblock %}

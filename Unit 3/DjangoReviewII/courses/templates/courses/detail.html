@@ -1,0 +1,7 @@
+{% extends 'courses/base.html' %} {% load static %} {% block content %} 
+<div class="d-flex flex-column align-items-center">
+    <h1>{{ course.name }}</h2>
+    <h3>{{ course.description }}</h4>
+    <img src="{{ course.image.url }}" width="250px" />
+</div>
+{% endblock %}
