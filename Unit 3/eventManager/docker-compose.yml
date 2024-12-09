@@ -1,0 +1,12 @@
+services:
+  web:
+    environment:
+      DJANGO_SUPERUSER_USERNAME: a23hugomg
+      DJANGO_SUPERUSER_EMAIL: a23hugomg@iessanclemente.net
+      DJANGO_SUPERUSER_PASSWORD: abc123.
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"

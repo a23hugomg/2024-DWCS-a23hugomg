@@ -1,0 +1,51 @@
+{% extends 'events/base.html' %} {% load static %} {% block content %}
+<div class="p-5">
+  <form action="{% url 'participants:detail' %}">
+    <div class="mb-3 mt-3">
+      <label for="name" class="form-label">Name:</label>
+      <input
+        type="name"
+        class="form-control"
+        id="name"
+        placeholder="Enter name"
+        name="name"
+        required
+      />
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="surname" class="form-label">Surname:</label>
+      <input
+        type="surname"
+        class="form-control"
+        id="surname"
+        placeholder="Enter surname"
+        name="surname"
+        required
+      />
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="age" class="form-label">Age:</label>
+      <input
+        type="number"
+        name="age"
+        id="age"
+        class="form-control"
+        min="18"
+        placeholder="Age"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="event" class="form-label">Event:</label>
+      <input
+        type="text"
+        name="event"
+        id="event"
+        class="form-control"
+        placeholder="Event name"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+</div>
+{% endblock %}

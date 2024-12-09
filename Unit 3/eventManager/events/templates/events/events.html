@@ -1,0 +1,22 @@
+{% extends 'events/base.html' %} {% load static %} {% block content %}
+<div class="d-flex column p-5">
+  {% for event in events %}
+  <a href="{% url 'events:detail' event.id %}" none>
+    <div class="card row text-center p-3 m-3">
+      <h2>{{ event.name }}</h2>
+      <h4>{{ event.description }}</h4>
+      <img
+        src="{{ event.image.url }}"
+        alt="{{ event.description }}"
+        class="mb-2"
+        width="100px"
+        height="300px"
+      />
+      <div class="card-footer" aria-disabled="true">
+        {{ event.fecha|date:'jS F Y' }}
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{%endblock %}

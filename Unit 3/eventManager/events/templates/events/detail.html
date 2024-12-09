@@ -1,0 +1,15 @@
+{% extends 'events/base.html' %} {% load static %} {% block content %}
+<div class="container-fluid p-5 text-center">
+  <h2>{{ event.name }}</h2>
+  <h4>{{ event.description }}</h4>
+  <img
+    src="{{ event.image.url }}"
+    alt="{{ event.description }}"
+    class="mb-2"
+    width="300px"
+  />
+  <div class="card-footer" aria-disabled="true">
+    {{ event.fecha|date:'j F Y' }}
+  </div>
+</div>
+{%endblock %}

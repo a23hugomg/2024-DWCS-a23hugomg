@@ -8,3 +8,10 @@ def home(request):
 def registration(request):
     return render(request, 'registration/home.html', {'registration':'registration'})
 
+
+def registration_details(request):
+    name = request.GET.get("name")
+    surname = request.GET.get("surname")
+    age = request.GET.get("age")
+    
+    return render(request, 'registration/details.html', {'name':name, 'surname':surname, 'age':age})

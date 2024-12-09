@@ -1,0 +1,19 @@
+{% extends 'events/base.html' %} {% load static %} {% block content %}
+<section class="p-5">
+  <h2 class="text-center">¿Qué es este sistema?</h2>
+  <p>
+    Nuestro sistema de gestión de eventos está diseñado para ayudarte a
+    coordinar todos los aspectos de un evento, desde la creación de agendas y el
+    manejo de inscripciones, hasta el seguimiento de asistentes y el análisis de
+    resultados. Ideal para conferencias, bodas, reuniones empresariales y más.
+  </p>
+</section>
+<section class="column text-center">
+  <img
+    src="{% static 'events/home.webp' %}"
+    alt="Equipo organizando un evento"
+    class="img-fluid"
+    width="500px"
+  />
+</section>
+{% endblock %}
