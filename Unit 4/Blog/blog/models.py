@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
+from django.urls import reverse
 
 # Create your models here.
 class Tag(models.Model):
@@ -26,3 +27,6 @@ class Post(models.Model):
     content = models.TextField(validators=[MinLengthValidator(10)])
     author = models.ForeignKey(Author, null=True, on_delete=models.SET_NULL, related_name="fkauthor", blank=True)
     tag = models.ManyToManyField(Tag)
+    
+    def get_absolute_url(self):
+        return reverse("blog_detail", args=[self.slug])

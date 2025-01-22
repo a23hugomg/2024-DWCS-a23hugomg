@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %} {% load static %}
+{% block title %} Posts {% endblock %}
+{% block content %}
+  <h1>Bienvenido! Todos los blogs.</h1>
+  <ul>
+    {% for post in all_blogs %}
+        {% include "blog/includes/post.html" %}
+    {% endfor %}
+  </ul>
+{% endblock %}
