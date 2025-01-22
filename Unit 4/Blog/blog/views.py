@@ -13,5 +13,5 @@ def blog_detail(request, slug):
     return render(request, "blog/blog_detail.html", {"post":post,"tags":tags})
 
 def all_posts(request):
-    all_posts = Post.objects.order_by("-date")
+    all_posts = Post.objects.all().order_by("-date")
     return render(request, "blog/all_posts.html", {"all_posts":all_posts})

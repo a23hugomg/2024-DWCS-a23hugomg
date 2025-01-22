@@ -1,0 +1,95 @@
+/* index.css */
+
+/* Estilos generales de la página */
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+} */
+
+h1 {
+  text-align: center;
+  color: #3498db;
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+a {
+  display: block;
+  text-align: center;
+  color: #3498db;
+  text-decoration: none;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Imagen principal */
+img {
+  display: block;
+  margin: 0 auto;
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 600px; /* Limita el tamaño máximo de la imagen */
+  height: auto;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+/* Estilo para los posts (en línea) */
+.posts-container {
+  display: flex;
+  flex-wrap: wrap; /* Asegura que los posts se ajusten a nuevas líneas si es necesario */
+  gap: 20px;
+  justify-content: space-between; /* Distribuye el espacio entre los posts */
+  margin-top: 20px;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+
+.post {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 30%; /* Asegura que los posts ocupen un 30% del ancho disponible */
+  box-sizing: border-box; /* Evita que el padding aumente el tamaño total */
+}
+
+.post h2 {
+  font-size: 0.8em;
+  color: #3498db;
+}
+
+.post p {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+a {
+  font-size: 1.2em;
+  padding: 10px;
+  background-color: #fff;
+  margin: 20px auto;
+  text-align: center;
+}
+
+a:hover {
+  color: #2980b9;
+  border-color: #2980b9;
+}

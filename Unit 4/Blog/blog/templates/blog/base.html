@@ -5,9 +5,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/styles/base.css' %}" />
+    {% block page_css %}{% endblock %}
   </head>
   <body>
-    <img alt="Imagen blog" src="{% static 'blog/images/hero.webp' %}" width="300px">
-    {% block content %} {% endblock %}
+    <header>
+      <h1>Mi Blog</h1>
+      <nav>
+        <a href="/">Inicio</a>
+      </nav>
+    </header>
+    <main>
+    {% block content %}{% endblock %}
+    </main>
+    <footer>
+      <p>&copy; 2025 Mi Blog</p>
+    </footer>
   </body>
 </html>

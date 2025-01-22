@@ -1,10 +1,17 @@
-{% extends "blog/base.html" %} {% load static %}
+{% extends "blog/base.html" %}
+{% load static %} 
 {% block title %} Posts {% endblock %}
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'blog/styles/index.css' %}" />
+{% endblock %}
 {% block content %}
-  <h1>Bienvenido! Todos los blogs.</h1>
-  <ul>
-    {% for post in all_blogs %}
+  <img alt="Imagen blog" src="{% static 'blog/images/hero.webp' %}" width="300px"/>
+  <h1>Bienvenido! Los mejores blogs.</h1>
+  <div class="posts-container">
+    {% for post in all_posts %}
+      <div class="post">
         {% include "blog/includes/post.html" %}
+      </div>
     {% endfor %}
-  </ul>
+  </div>
 {% endblock %}

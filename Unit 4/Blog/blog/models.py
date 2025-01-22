@@ -29,4 +29,4 @@ class Post(models.Model):
     tag = models.ManyToManyField(Tag)
     
     def get_absolute_url(self):
-        return reverse("blog_detail", args=[self.slug])
+        return reverse("blog:blog_detail", args=[self.slug])

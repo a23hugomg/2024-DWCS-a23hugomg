@@ -1,1 +1,4 @@
-<a href="{{ post.get_absolute_url }}"><li>{{ post.date|date:'d/m/Y' }} - {{ post.title }}</li></a>
+<a href="{{ post.get_absolute_url }}">
+  {{ post.title }}
+  <p>{{ post.date|date:'d/m/Y' }}</p>
+</a>
