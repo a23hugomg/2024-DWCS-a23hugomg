@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import ReviewForm
 from django.views import View
@@ -14,7 +14,7 @@ class ReviewView(View):
         form = ReviewForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/thank-you")
+            return redirect("/thank-you")
         
 
 def thank_you(request):
