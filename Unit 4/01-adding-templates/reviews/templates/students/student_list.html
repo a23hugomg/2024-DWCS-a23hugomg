@@ -1,0 +1,11 @@
+{% extends "reviews/base.html" %}
+
+{% block title %}All Reviews{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for student in students %}
+            <li>{{ student.name }} (Degree: {{ student.degree }})</li>
+        {% endfor %}
+    </ul>
+{% endblock  %}
