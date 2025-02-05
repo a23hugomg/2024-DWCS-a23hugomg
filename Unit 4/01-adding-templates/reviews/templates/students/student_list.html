@@ -3,6 +3,7 @@
 {% block title %}All Reviews{% endblock %}
 
 {% block content %}
+    <h2>{{ message }}</h2>
     <ul>
         {% for student in students %}
             <li>{{ student.name }} (Degree: {{ student.degree }})</li>

@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views.generic.edit import FormView, CreateView
 from .forms import ReviewForm, StudentForm
 
@@ -82,21 +82,30 @@ class StudentView(CreateView):
     model = Student
     form_class = StudentForm
     template_name = "students/student.html"
-    success_url = "/thank-you"
-
-class ThankYouView(TemplateView):
-    template_name = "students/thank_you.html"
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["message"] = "This works!" 
-        return context
+    success_url = "/student/list"
     
 class StudentListView(ListView):
     template_name = "students/student_list.html"
     model = Student
     context_object_name = "students"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["message"] = "Successful operation!" 
+        return context
 
 class StudentDetailsView(DetailView):
     template_name = "students/details.html"
     model = Student
+    
+class StudentUpdateView(UpdateView):
+    model = Student
+    form_class = StudentForm
+    template_name = "students/update.html"
+    success_url = "/student/list"
+    
+class StudentDeleteView(DeleteView):
+    model = Student
+    form_class = StudentForm
+    template_name = "students/delete.html"
+    success_url = "/student/list"
