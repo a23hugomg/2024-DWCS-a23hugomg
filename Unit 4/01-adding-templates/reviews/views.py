@@ -82,8 +82,8 @@ class StudentView(CreateView):
     model = Student
     form_class = StudentForm
     template_name = "students/student.html"
-    success_url = "/student/list"
-    
+    success_url = "/student/all"
+        
 class StudentListView(ListView):
     template_name = "students/student_list.html"
     model = Student
@@ -102,10 +102,10 @@ class StudentUpdateView(UpdateView):
     model = Student
     form_class = StudentForm
     template_name = "students/update.html"
-    success_url = "/student/list"
+    success_url = "/student/all"
     
 class StudentDeleteView(DeleteView):
     model = Student
     form_class = StudentForm
     template_name = "students/delete.html"
-    success_url = "/student/list"
+    success_url = "/student/all"
