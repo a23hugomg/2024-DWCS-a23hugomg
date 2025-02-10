@@ -1,5 +1,8 @@
 {% extends "blog/base.html" %} {% load static %}
 {% block title %} {{ post.title }} {% endblock %}
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'blog/styles/details.css' %}" />
+{% endblock %}
 {% block content %}
     <img src="{% static 'blog/images/'|add:post.imageName %}" alt="{{ post.title }}" width="300px">
     <h1>{{ post.title }} - {{ post.date|date:'d/m/Y'}}</h1>
