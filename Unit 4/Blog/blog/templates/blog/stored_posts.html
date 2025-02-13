@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %} {% load static %} {% block title %} Stored Posts
+{% endblock %} {% block page_css %}
+<link rel="stylesheet" href="{% static 'blog/styles/stored_posts.css' %}" />
+{% endblock %} {% block content %}
+<section id="stored-posts">
+  <h2>Stored posts</h2>
+  {% if not has_posts %}
+  <p>you didn´t have posts</p>
+  {% endif %}
+  <ul>
+    {% for post in posts %} {% include "blog/includes/post.html" %} {% endfor %}
+  </ul>
+</section>
+{% endblock %}

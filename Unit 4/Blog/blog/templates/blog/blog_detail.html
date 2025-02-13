@@ -31,4 +31,18 @@
             <button type="submit">Send</button>
         </form>
     </section>
+    <div id="comments">
+        <ul>
+        {% for comment in comments %}
+            <li>{{ comment.user_name }} - {{ comment.text }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div id="read-later">
+        <form action="{% url 'blog:read-later'%}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{ post.id }}"  name="post_id"></input>
+            <button>Read later</button>
+        </form>
+    </div>
 {% endblock %}
