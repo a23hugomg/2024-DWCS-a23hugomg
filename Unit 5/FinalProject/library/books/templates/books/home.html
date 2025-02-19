@@ -1,0 +1,43 @@
+{% extends "books/base.html" %} {% load static %} {% block content %}
+<div class="container-fluid p-0 position-relative">
+  <img
+    src="{% static 'books/libros.jpg' %}"
+    class="img-fluid w-100 custom-height"
+    alt="Librería de libros"
+  />
+  <div class="text-overlay">
+    <h1>¡Welcome to the library!</h1>
+    <p>Explore our book collections and find your next favorite.</p>
+  </div>
+</div>
+<div class="container mt-4">
+  <h2 class="section-title text-center mb-4">Libros Recomendados</h2>
+  <div class="row">
+    {% for book in books %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img
+          src="{{ book.image.url }}"
+          class="card-img-top"
+          alt="{{ book.title }}"
+          style="height: 200px; object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ book.title }}</h5>
+          <p class="card-text">{{ book.description }}</p>
+          <a
+            href="{% url 'book:detail' book.id %}"
+            class="btn btn-primary btn-sm mb-3"
+            >Leer más</a
+          >
+          <p><strong>Precio:</strong> {{ book.price }}€</p>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Publicado: {{ book.publication_date|date:"j F, Y" }}</small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
