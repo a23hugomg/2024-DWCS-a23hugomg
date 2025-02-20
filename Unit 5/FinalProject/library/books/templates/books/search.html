@@ -1,0 +1,92 @@
+{% extends "books/base.html" %} {% block content %}
+<div class="container mt-4">
+  <h2 class="text-center">Library Search</h2>
+
+  <form method="GET" action="{% url 'book:search' %}" class="mb-3">
+    <div class="input-group">
+      <input
+        type="text"
+        name="q"
+        value="{{ query }}"
+        class="form-control"
+        placeholder="Search books or authors..."
+      />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </form>
+
+  <div class="mb-4 text-center">
+    <a
+      href="{% url 'book:search' %}?q={{ query }}&filter=all"
+      class="btn btn-outline-primary {% if filter == 'all' %}active{% endif %}"
+      >All</a
+    >
+    <a
+      href="{% url 'book:search' %}?q={{ query }}&filter=books"
+      class="btn btn-outline-secondary {% if filter == 'books' %}active{% endif %}"
+      >Books</a
+    >
+    <a
+      href="{% url 'book:search' %}?q={{ query }}&filter=authors"
+      class="btn btn-outline-secondary {% if filter == 'authors' %}active{% endif %}"
+      >Authors</a
+    >
+  </div>
+
+  {% if books or authors %}
+  <h4 class="mb-4">Results for "{{ query }}":</h4>
+
+  {% if books and filter != "authors" %}
+  <h3 class="mt-4">Books:</h3>
+  <div class="row">
+    {% for book in books %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        {% if book.image %}
+        <img
+          src="{{ book.image.url }}"
+          class="card-img-top"
+          alt="{{ book.title }}"
+          style="height: 200px; object-fit: cover"
+        />
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ book.title }}</h5>
+          <p class="card-text">{{ book.description|truncatewords:15 }}</p>
+          <a
+            href="{% url 'book:detail' book.id %}"
+            class="btn btn-primary btn-sm"
+            >Read more</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %} {% if authors and filter != "books" %}
+  <h3 class="mt-4">Authors:</h3>
+  <div class="row">
+    {% for author in authors %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        {% if author.image %}
+        <img
+          src="{{ author.image.url }}"
+          class="card-img-top"
+          alt="{{ author.name }}"
+          style="height: 200px; object-fit: cover"
+        />
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ author.name }}</h5>
+          <p class="card-text">{{ author.bio|truncatewords:20 }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %} {% else %}
+  <h4 class="text-muted">No results found for "{{ query }}".</h4>
+  {% endif %}
+</div>
+{% endblock %}

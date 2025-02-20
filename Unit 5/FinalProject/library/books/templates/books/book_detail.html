@@ -12,10 +12,15 @@
     <div class="col-md-6">
       <h1 class="mb-3">{{ book.title }}</h1>
       <p class="text-muted">
-        <strong>Publicado:</strong> {{ book.publication_date|date:"j F, Y" }}
+        <strong>Published:</strong> {{ book.publication_date|date:"j F, Y" }}
       </p>
       <p class="fs-5">{{ book.description }}</p>
-      <p class="text-primary fw-bold fs-4">Precio: {{ book.price }}€</p>
+      <p class="fs-5">
+        Written by:{% for author in book.authors.all %}
+        <li>{{ author.name }}</li>
+        {% endfor %}
+      </p>
+      <p class="text-primary fw-bold fs-4">Price: {{ book.price }}€</p>
     </div>
   </div>
 </div>

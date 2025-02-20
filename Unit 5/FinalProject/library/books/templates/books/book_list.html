@@ -1,8 +1,6 @@
-{% extends "books/base.html" %} {% block content %}
+{% extends "books/base.html" %} {% load static %} {% block content %}
 <div class="container mt-4">
-  <h2 class="text-center">Búsqueda de Libros</h2>
-  {% if books %}
-  <h4 class="mb-4">Resultados para "{{ query }}":</h4>
+  <h2 class="section-title text-center mb-4">All Books!</h2>
   <div class="row">
     {% for book in books %}
     <div class="col-lg-4 col-md-6 mb-4">
@@ -15,19 +13,20 @@
         />
         <div class="card-body">
           <h5 class="card-title">{{ book.title }}</h5>
-          <p class="card-text">{{ book.description|truncatewords:15 }}</p>
+          <p class="card-text">{{ book.description }}</p>
           <a
             href="{% url 'book:detail' book.id %}"
-            class="btn btn-primary btn-sm"
-            >Leer más</a
+            class="btn btn-primary btn-sm mb-3"
+            >Read more</a
           >
+          <p><strong>Price:</strong> {{ book.price }}€</p>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Published: {{ book.publication_date|date:"j F, Y" }}</small>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
-  {% else %}
-  <h4 class="text-muted">No se encontraron libros para "{{ query }}".</h4>
-  {% endif %}
 </div>
 {% endblock %}

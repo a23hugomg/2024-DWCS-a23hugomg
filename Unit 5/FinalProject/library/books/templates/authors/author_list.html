@@ -7,15 +7,22 @@
       {% for author in authors %}
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100 shadow-sm">
+          {% if author.image %}
           <img
             src="{{ author.image.url }}"
             class="card-img-top"
             alt="{{ author.name }}"
             style="height: 200px; object-fit: cover"
           />
+          {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ author.name }}</h5>
             <p class="card-text">{{ author.bio }}</p>
+            <a
+              href="{% url 'book:authors_detail' author.id %}"
+              class="btn btn-primary btn-sm mb-3"
+              >Learn more</a
+            >
           </div>
         </div>
       </div>

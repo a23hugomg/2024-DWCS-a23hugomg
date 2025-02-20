@@ -1,0 +1,27 @@
+{% extends "books/base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'authors/style.css' %}" />
+<div class="container mt-4">
+  <div class="section-title text-center mt-4">
+    <h2>{{ author.name }}</h2>
+    <div class="row mt-4">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          {% if author.image %}
+          <img
+            src="{{ author.image.url }}"
+            class="card-img-top"
+            alt="{{ author.name }}"
+            style="height: 200px; object-fit: cover"
+          />
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ author.name }}</h5>
+            <p class="card-text">{{ author.bio }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
