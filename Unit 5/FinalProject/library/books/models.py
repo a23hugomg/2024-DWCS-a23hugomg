@@ -7,7 +7,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Author(models.Model):
     name = models.CharField(max_length=255)
     bio = models.TextField()
-    image = models.ImageField(upload_to='authors/images/', blank=True, null=True)
+    image = models.ImageField(upload_to='authors/images/',blank=True, null=True)
     readers = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1)])
 
     def __str__(self):

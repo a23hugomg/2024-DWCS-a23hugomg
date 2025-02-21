@@ -1,27 +1,32 @@
 {% extends "books/base.html" %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'authors/style.css' %}" />
-<div class="container mt-4">
-  <div class="section-title text-center mt-4">
-    <h2>{{ author.name }}</h2>
-    <div class="row mt-4">
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100 shadow-sm">
-          {% if author.image %}
-          <img
-            src="{{ author.image.url }}"
-            class="card-img-top"
-            alt="{{ author.name }}"
-            style="height: 200px; object-fit: cover"
-          />
-          {% endif %}
-          <div class="card-body">
-            <h5 class="card-title">{{ author.name }}</h5>
-            <p class="card-text">{{ author.bio }}</p>
-          </div>
-        </div>
-      </div>
+
+<div class="container mt-5">
+  {% if author.image %}
+  <div class="row">
+    <div class="col-md-4">
+      <img
+        src="{{ author.image.url }}"
+        class="card-img-top"
+        alt="{{ author.name }}"
+        style="max-height: 500px; width: 400px; object-fit: cover"
+      />
+    </div>
+    <div class="col-md-6">
+      <h1 class="mb-3">{{ author.name }}</h1>
+      <h4>Bio:</h4>
+      <p class="fs-5" style="height: 400px">{{ author.bio }}</p>
     </div>
   </div>
+  {% else %}
+  <div class="text-center mb-4">
+    <h1 class="mb-3">{{ author.name }}</h1>
+    <h4>Bio:</h4>
+    <p class="fs-5">{{ author.bio }}</p>
+  </div>
+  {% endif %}
+
+  <p class="fw-bold fs-3 text-center mt-4">Books:</p>
 </div>
 
 {% endblock %}
