@@ -24,8 +24,9 @@
             href="{% url 'book:detail' book.id %}"
             class="btn btn-primary btn-sm mb-3"
             >Read more</a
-          >
-          <p><strong>Price:</strong> {{ book.price }}€</p>
+            >
+            <p><strong>Price:</strong> {{ book.price }}€</p>
+            <p><strong>Rating:</strong> {{ book.rating }}</p>
         </div>
         <div class="card-footer text-muted">
           <small>Published: {{ book.publication_date|date:"j F, Y" }}</small>

@@ -16,6 +16,7 @@
       <h1 class="mb-3">{{ author.name }}</h1>
       <h4>Bio:</h4>
       <p class="fs-5" style="height: 400px">{{ author.bio }}</p>
+      <h5>Readers: {{ author.readers }}</h5>
     </div>
   </div>
   {% else %}
@@ -23,6 +24,7 @@
     <h1 class="mb-3">{{ author.name }}</h1>
     <h4>Bio:</h4>
     <p class="fs-5">{{ author.bio }}</p>
+    <h5>Readers: {{ author.readers }}</h5>
   </div>
   {% endif %}
 

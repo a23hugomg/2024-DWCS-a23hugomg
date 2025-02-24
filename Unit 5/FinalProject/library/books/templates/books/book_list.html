@@ -1,6 +1,6 @@
 {% extends "books/base.html" %} {% load static %} {% block content %}
-<div class="container mt-4">
-  <h2 class="section-title text-center mb-4">All Books!</h2>
+<div class="container">
+  <h2 class="section-title text-center mb-4 mt-4">All Books!</h2>
   <div class="row">
     {% for book in books %}
     <div class="col-lg-4 col-md-6 mb-4">
@@ -15,6 +15,7 @@
             >Read more</a
           >
           <p><strong>Price:</strong> {{ book.price }}€</p>
+          <p><strong>Rating:</strong> {{ book.rating }}</p>
         </div>
         <div class="card-footer text-muted">
           <small>Published: {{ book.publication_date|date:"j F, Y" }}</small>
