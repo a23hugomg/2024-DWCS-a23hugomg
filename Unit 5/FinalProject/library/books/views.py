@@ -55,6 +55,11 @@ class ListAuthors(ListView):
 class DetailAuthor(DetailView):
     template_name = "authors/author_detail.html"
     model = Author
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["books_by_author"] = Book.objects.filter(authors=self.object)
+        return context
 
 
 class SearchView(ListView):

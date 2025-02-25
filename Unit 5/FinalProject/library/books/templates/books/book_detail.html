@@ -1,5 +1,5 @@
 {% extends "books/base.html" %} {% load static %} {% block content %}
-<div class="container mt-5">
+<div class="container mt-5 ">
   <div class="row">
     <div class="col-md-6">
       <img src="{% if book.image %}{{ book.image.url }}{% else %}{% static "books/default.jpg" %}{% endif %}" class="card-img-top" alt="{{ book.title }}" style="max-height: 600px; width: 400px; object-fit: cover" />
@@ -12,11 +12,12 @@
       <p class="fs-5">{{ book.description }}</p>
       <p class="fs-5">
         Written by:{% for author in book.authors.all %}
-        <li>{{ author.name }}</li>
+        <a href="{% url 'book:authors_detail' author.id %}"><li>{{ author.name }}</li></a>
         {% endfor %}
       </p>
       <p class="text-primary fw-bold fs-4">Price: {{ book.price }}€</p>
       <p><strong>Rating:</strong> {{ book.rating }}/10</p>
+      
     </div>
   </div>
 </div>
