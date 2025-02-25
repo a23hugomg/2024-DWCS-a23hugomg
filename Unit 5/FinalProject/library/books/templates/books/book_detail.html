@@ -17,7 +17,8 @@
       </p>
       <p class="text-primary fw-bold fs-4">Price: {{ book.price }}€</p>
       <p><strong>Rating:</strong> {{ book.rating }}/10</p>
-      
+      <a class="btn btn-primary btn-sm mb-3" href="{% url "book:update" book.id %}">Update Book</a>
+      <a class="btn btn-primary btn-sm mb-3" href="{% url "book:delete" book.id %}">Delete Book</a>
     </div>
   </div>
 </div>

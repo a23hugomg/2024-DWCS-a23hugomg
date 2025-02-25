@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models  import Book, Author
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
 
 # Create your views here.
@@ -24,6 +24,7 @@ from django.views.generic import ListView, DetailView
 
 #NUEVAS VIEWS
 
+# Book
 class Home(ListView):
     template_name = "books/home.html"
     model = Book
@@ -44,6 +45,25 @@ class DetailBook(DetailView):
     template_name = "books/book_detail.html"
     model = Book
     
+class AddBook(CreateView):
+    model = Book
+    fields = "__all__"
+    template_name = "books/add_book.html"
+    success_url = "/books"
+    
+class UpdateBook(UpdateView):
+    model = Book
+    fields = "__all__"
+    template_name = "books/update_book.html"
+    success_url = "/books"
+
+class DeleteBook(DeleteView):
+    model = Book
+    fields = "__all__"
+    template_name = "books/delete_book.html"
+    success_url = "/books"
+    
+# Author    
 class ListAuthors(ListView):
     template_name = "authors/author_list.html"
     model = Author
@@ -60,6 +80,8 @@ class DetailAuthor(DetailView):
         context = super().get_context_data(**kwargs)
         context["books_by_author"] = Book.objects.filter(authors=self.object)
         return context
+    
+
 
 
 class SearchView(ListView):
