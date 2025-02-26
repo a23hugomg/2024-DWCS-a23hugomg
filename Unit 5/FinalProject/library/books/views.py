@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models  import Book, Author
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
+from .forms import AuthorForm
 
 
 # Create your views here.
@@ -80,10 +81,25 @@ class DetailAuthor(DetailView):
         context = super().get_context_data(**kwargs)
         context["books_by_author"] = Book.objects.filter(authors=self.object)
         return context
+        
+class AddAuthor(CreateView):
+    model = Author
+    form_class = AuthorForm
+    template_name = "authors/add_author.html"
+    success_url = "/authors"
+
+class UpdateAuthor(UpdateView):
+    model = Author
+    form_class = AuthorForm
+    template_name = "authors/update_author.html"
+    success_url = "/authors"
     
+class DeleteAuthor(DeleteView):
+    model = Author
+    template_name = "authors/delete_author.html"
+    success_url = "/authors"
 
-
-
+# Barra de busquéda
 class SearchView(ListView):
     template_name = "books/search.html"
     context_object_name = "books"
@@ -95,7 +111,6 @@ class SearchView(ListView):
         books = Book.objects.filter(title__icontains=query) if query else Book.objects.all()
         authors = Author.objects.filter(name__icontains=query) if query else Author.objects.all()
 
-        # Aplicar filtro
         if filter_option == "books":
             return books
         elif filter_option == "authors":

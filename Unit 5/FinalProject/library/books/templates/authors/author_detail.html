@@ -17,6 +17,8 @@
       <h4>Bio:</h4>
       <p class="fs-5" style="height: 400px">{{ author.bio }}</p>
       <h5>Readers: {{ author.readers }}</h5>
+      <a class="btn btn-primary btn-sm mb-3 mt-4" href="{% url "book:updateAuthor" author.id %}">Update Author</a>
+      <a class="btn btn-primary btn-sm mb-3 mt-4" href="{% url "book:deleteAuthor" author.id %}">Delete Author</a>
     </div>
   </div>
   {% else %}
@@ -34,7 +36,7 @@
       {% for book in books_by_author %}
       <div class="col-lg-3 col-md-6 mb-4">
       <div class="card h-100 shadow-sm">
-        <img src="{% if book.image %}{{ book.image.url }}{% else %}{% static "books/default.jpg" %}{% endif %}" class="card-img-top" alt="{{ book.title }}" style="height: 150px; object-fit: cover" />
+        <a href="{% url 'book:detail' book.id %}"><img src="{% if book.image %}{{ book.image.url }}{% else %}{% static "books/default.jpg" %}{% endif %}" class="card-img-top" alt="{{ book.title }}" style="height: 150px; object-fit: cover" /></a>
           <div class="card-body d-flex flex-column align-items-center text-center">
             <h5 class="card-title">{{ book.title }}</h5>
             <a
@@ -50,7 +52,7 @@
     </div>
       {% endfor %}
       {% else %}
-      <h2>No se han encontrado libros</h2>
+      <h4 class="text-center text-danger">No se han encontrado libros</h4>
       {% endif %}
     </div>
 </div>

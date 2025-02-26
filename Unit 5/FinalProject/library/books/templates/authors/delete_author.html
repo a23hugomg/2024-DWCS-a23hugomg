@@ -1,8 +1,7 @@
 {% extends "books/base.html" %} {% load static %}{% block content %}
 <form action="" method="POST">
     {% csrf_token %}
-    Are you sure to delete this book?
-    {{ book.title }}
+    Are you sure to delete - {{ author.name }}?
     <button type="submit">Delete</button>
   </form>
 {% endblock content %}

@@ -7,12 +7,13 @@
       {% for author in authors %}
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100 shadow-sm">
-          <img
+          <a
+              href="{% url 'book:authors_detail' author.id %}"><img
             src="{% if author.image %}{{ author.image.url }}{% else %}{% static 'authors/predeterminado.jpg' %}{% endif %}"
             class="card-img-top"
             alt="{{ author.name }}"
             style="height: 200px; object-fit: cover"
-          />
+          /></a>
           <div class="card-body">
             <h5 class="card-title">{{ author.name }}</h5>
             <p class="card-text">{{ author.bio }}</p>
@@ -26,6 +27,7 @@
       </div>
       {% endfor %}
     </div>
+    <a href="{% url "book:addAuthor" %}">Add Author</a>
   </div>
 </div>
 
