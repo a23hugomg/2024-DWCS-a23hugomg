@@ -27,6 +27,8 @@
     <h4>Bio:</h4>
     <p class="fs-5">{{ author.bio }}</p>
     <h5>Readers: {{ author.readers }}</h5>
+    <a class="btn btn-primary btn-sm mb-3 mt-4" href="{% url "book:updateAuthor" author.id %}">Update Author</a>
+    <a class="btn btn-primary btn-sm mb-3 mt-4" href="{% url "book:deleteAuthor" author.id %}">Delete Author</a>
   </div>
   {% endif %}
 
@@ -41,7 +43,7 @@
             <h5 class="card-title">{{ book.title }}</h5>
             <a
               href="{% url 'book:detail' book.id %}"
-              class="btn btn-primary btn-sm mb-1 "
+              class="btn btn-primary btn-sm mt-2"
               >Read more</a
             >
           </div>

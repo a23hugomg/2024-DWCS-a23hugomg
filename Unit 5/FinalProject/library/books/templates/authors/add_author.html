@@ -1,13 +1,21 @@
 {% extends "books/base.html" %} {% load static %}{% block content %}
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form %}
-      <div class="form-control {% if field.errors %}errors{% endif %}">
-        {{ field.label_tag }}
-        {{ field }}
-        {{ field.errors }}
-      </div>
-    {% endfor %}
-    <button type="submit">Add author</button>
-  </form>
+<div class="container d-flex justify-content-center align-items-center text-center" style="min-height:75vh">
+  <div class="card shadow p-4 w-50">
+    <h2 class="text-center mb-4">Add a New Author</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="mb-3">
+          {{ field.label_tag }}
+          {{ field }}
+          <div class="text-danger">
+            {{ field.errors }}
+          </div>
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-primary w-100">Add Author</button>
+      <a class="btn btn-secondary w-100 mt-3" href="{% url 'book:authors' %}">Cancel</a>
+    </form>
+  </div>
+</div>
 {% endblock content %}

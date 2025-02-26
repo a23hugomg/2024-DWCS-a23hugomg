@@ -1,6 +1,35 @@
 {% extends "books/base.html" %} {% load static %} {% block content %}
 <div class="container">
   <h2 class="section-title text-center mb-4 mt-4">All Books!</h2>
+
+  {% comment %} <form method="GET" action="{% url 'book:books' %}" class="mb-4 d-flex gap-2">
+    <select name="sort_by" class="form-select w-auto">
+      <option value="">Sort by</option>
+      <option value="price">Price (Low to High)</option>
+      <option value="-price">Price (High to Low)</option>
+      <option value="publication_date">Publication Date (Oldest to Newest)</option>
+      <option value="-publication_date">Publication Date (Newest to Oldest)</option>
+      <option value="rating">Rating (Low to High)</option>
+      <option value="-rating">Rating (High to Low)</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Apply</button>
+  </form> {% endcomment %}
+
+  <div class="row mb-3">
+    <div class="col-md-4 offset-md-4">
+      <label for="sort_select">Sort books by:</label>
+      <select id="sort_select" class="form-select" onchange="location = this.value;">
+        <option value="?sort_by=">-----------</option>  <!-- Default option with no sorting -->
+        <option value="?sort_by=price" {% if request.GET.sort_by == 'price' %}selected{% endif %}>Price (Low to High)</option>
+        <option value="?sort_by=-price" {% if request.GET.sort_by == '-price' %}selected{% endif %}>Price (High to Low)</option>
+        <option value="?sort_by=-publication_date" {% if request.GET.sort_by == '-publication_date' %}selected{% endif %}>Publication Date (Newest First)</option>
+        <option value="?sort_by=publication_date" {% if request.GET.sort_by == 'publication_date' %}selected{% endif %}>Publication Date (Oldest First)</option>
+        <option value="?sort_by=-rating" {% if request.GET.sort_by == '-rating' %}selected{% endif %}>Rating (Highest to Lowest)</option>
+        <option value="?sort_by=rating" {% if request.GET.sort_by == 'rating' %}selected{% endif %}>Rating (Lowest to Highest)</option>
+      </select>
+    </div>
+  </div>
+
   <div class="row">
     {% for book in books %}
     <div class="col-lg-4 col-md-6 mb-4">

@@ -4,27 +4,6 @@ from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .forms import AuthorForm
 
-
-# Create your views here.
-# def home(request):
-#     books = Book.objects.all()
-#     return render(request, 'books/home.html', {'books':books})
-
-# def book_detail(request, book_id):
-#     book = get_object_or_404(Book, id=book_id)
-#     return render(request, 'books/book_detail.html', {'book': book})
-
-# def book_search(request):
-#     query = request.GET.get('q', '')
-#     books = Book.objects.filter(title__icontains=query) if query else Book.objects.all()
-#     return render(request, 'books/book_search.html', {'books': books, 'query': query})
-
-# def author(request):
-#     authors = Author.objects.all()
-#     return render(request, 'authors/author.html', {'authors':authors})
-
-#NUEVAS VIEWS
-
 # Book
 class Home(ListView):
     template_name = "books/home.html"
@@ -38,9 +17,16 @@ class ListBooks(ListView):
     template_name = "books/book_list.html"
     model = Book
     context_object_name = "books"
-    
+
     def get_queryset(self):
-        return Book.objects.all().order_by("-rating")
+        sort_by = self.request.GET.get("sort_by", "")
+        books = Book.objects.all()
+
+        if sort_by in ["price", "-price", "publication_date", "-publication_date", "rating", "-rating"]:
+            books = books.order_by(sort_by)
+
+        return books
+
 
 class DetailBook(DetailView):
     template_name = "books/book_detail.html"
