@@ -17,10 +17,20 @@
       </p>
       <p class="text-primary fw-bold fs-4">Price: {{ book.price }}€</p>
       <p><strong>Rating:</strong> {{ book.rating }}/10</p>
-      <div class="d-flex flex-row justify-content-center mb-5   ">   
-        <a class="btn btn-primary btn-sm" href="{% url "book:update" book.id %}">Update Book</a>
-        <a class="btn btn-primary btn-sm ms-4" href="{% url "book:delete" book.id %}">Delete Book</a>
-        <a class="btn btn-success btn-sm ms-4" href="{% url "book:delete" book.id %}">Add favourite</a>
+      <div class="d-flex flex-row justify-content-center mb-5">
+          <a class="btn btn-primary btn-sm" href="{% url "book:update" book.id %}">Update Book</a>
+          <a class="btn btn-danger btn-sm ms-4" href="{% url "book:delete" book.id %}">Delete Book</a>
+
+          <form action="{% url 'book:addReadLater' %}" method="POST" class="ms-4">
+              {% csrf_token %}
+              <input type="hidden" name="book_id" value="{{ book.id }}">
+
+              {% if book.id|stringformat:"s" in request.session.read_later %}
+                  <button type="submit" class="btn btn-secondary btn-sm">Remove from Read Later</button>
+              {% else %}
+                  <button type="submit" class="btn btn-success btn-sm">Add to Read Later</button>
+              {% endif %}
+          </form>
       </div>
     </div>
   </div>

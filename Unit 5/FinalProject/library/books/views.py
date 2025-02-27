@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models  import Book, Author
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .forms import AuthorForm
 
@@ -32,6 +32,13 @@ class DetailBook(DetailView):
     template_name = "books/book_detail.html"
     model = Book
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        read_later_books = self.request.session.get("read_later", [])
+        context["is_read_later"] = str(self.object.id) in read_later_books
+        return context
+
+    
 class AddBook(CreateView):
     model = Book
     fields = "__all__"
@@ -50,6 +57,30 @@ class DeleteBook(DeleteView):
     template_name = "books/delete_book.html"
     success_url = "/books"
     
+class AddReadLater(View):
+    def post(self, request):
+        book_id = request.POST.get("book_id")
+        if not book_id:
+            return HttpResponseRedirect("/books")
+
+        read_later_books = request.session.get("read_later", [])
+
+        if book_id in read_later_books:
+            read_later_books.remove(book_id)
+        else:
+            read_later_books.append(book_id)
+
+        request.session["read_later"] = read_later_books
+        return HttpResponseRedirect(f"/books/{book_id}") 
+
+
+class ReadLaterList(View):
+    def get(self, request):
+        read_later_books = request.session.get("read_later", [])
+        books = Book.objects.filter(id__in=read_later_books)
+        return render(request, "books/read_later.html", {"books": books})
+
+
 # Author    
 class ListAuthors(ListView):
     template_name = "authors/author_list.html"

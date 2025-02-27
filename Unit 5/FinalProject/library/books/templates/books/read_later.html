@@ -1,0 +1,41 @@
+{% extends "books/base.html" %} 
+{% block content %}
+{% load static %}
+<div class="container">
+  <h2 class="section-title text-center mb-4 mt-4"">Read Later List</h2>
+
+  {% if books %}
+  <div class="row">
+    {% for book in books %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        <a
+            href="{% url 'book:detail' book.id %}"><img src="{% if book.image %}{{ book.image.url }}{% else %}{% static "books/default.jpg" %}{% endif %}" class="card-img-top" alt="{{ book.title }}" style="height: 200px; object-fit: cover" /></a>
+        <div class="card-body">
+          <h5 class="card-title">{{ book.title }}</h5>
+          <p class="card-text">{{ book.description }}</p>
+          <a
+            href="{% url 'book:detail' book.id %}"
+            class="btn btn-primary btn-sm mb-3"
+            >Read more</a
+            >
+            <p><strong>Written by:
+            {% for author in book.authors.all %}
+            </strong> <a href="{% url 'book:authors_detail' author.id %}" style="color:black">{{ author.name }}</a>
+            {% endfor %}
+          </p>
+            <p><strong>Price:</strong> {{ book.price }}€</p>
+            <p><strong>Rating:</strong> {{ book.rating }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Published: {{ book.publication_date|date:"j F, Y" }}</small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="text-center">No books saved in Read Later.</p>
+  {% endif %}
+</div>
+{% endblock %}

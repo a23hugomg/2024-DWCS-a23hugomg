@@ -6,6 +6,10 @@ app_name = 'book'
 urlpatterns = [
     path('', views.Home.as_view(), name='home'),
     path('books/', views.ListBooks.as_view(), name="books"),
+    path('books/read-later/add/', views.AddReadLater.as_view(), name="addReadLater"),
+    path('books/read-later/', views.ReadLaterList.as_view(), name="readLater"),
+    path('books/read-later/', views.ReadLaterList.as_view(), name="readLater"),
+    
     path('books/<int:pk>/', views.DetailBook.as_view(), name="detail"),
     path("books/add", views.AddBook.as_view(), name="add"),
     path("books/<int:pk>/update", views.UpdateBook.as_view(), name="update"),
@@ -19,5 +23,3 @@ urlpatterns = [
     
     path('search/', views.SearchView.as_view(), name='search'),
 ]
-
-#NUEVAS URLS
