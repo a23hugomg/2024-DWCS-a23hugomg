@@ -27,7 +27,6 @@ class ListBooks(ListView):
 
         return books
 
-
 class DetailBook(DetailView):
     template_name = "books/book_detail.html"
     model = Book
@@ -38,7 +37,6 @@ class DetailBook(DetailView):
         context["is_read_later"] = str(self.object.id) in read_later_books
         return context
 
-    
 class AddBook(CreateView):
     model = Book
     fields = "__all__"

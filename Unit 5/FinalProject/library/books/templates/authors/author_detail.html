@@ -18,7 +18,7 @@
       <p class="fs-5" style="height: 400px">{{ author.bio }}</p>
       <h5>Readers: {{ author.readers }}</h5>
       <a class="btn btn-primary btn-sm mb-3 mt-4" href="{% url "book:updateAuthor" author.id %}">Update Author</a>
-      <a class="btn btn-primary btn-sm mb-3 mt-4" href="{% url "book:deleteAuthor" author.id %}">Delete Author</a>
+      <a class="btn btn-danger btn-sm mb-3 mt-4" href="{% url "book:deleteAuthor" author.id %}">Delete Author</a>
     </div>
   </div>
   {% else %}
@@ -28,7 +28,7 @@
     <p class="fs-5">{{ author.bio }}</p>
     <h5>Readers: {{ author.readers }}</h5>
     <a class="btn btn-primary btn-sm mb-3 mt-4" href="{% url "book:updateAuthor" author.id %}">Update Author</a>
-    <a class="btn btn-primary btn-sm mb-3 mt-4" href="{% url "book:deleteAuthor" author.id %}">Delete Author</a>
+    <a class="btn btn-danger btn-sm mb-3 mt-4" href="{% url "book:deleteAuthor" author.id %}">Delete Author</a>
   </div>
   {% endif %}
 
@@ -54,7 +54,7 @@
     </div>
       {% endfor %}
       {% else %}
-      <h4 class="text-center text-danger">No se han encontrado libros</h4>
+      <h4 class="text-center text-danger">No books found.</h4>
       {% endif %}
     </div>
 </div>
