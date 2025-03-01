@@ -3,7 +3,7 @@
   <div class="card shadow p-4 w-50">
     <h2 class="text-center mb-4">Update: {{ book.title }}</h2>
     <form action="" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
+      {% comment %} {% csrf_token %}
       {% for field in form %}
         <div class="mb-3">
           {{ field.label_tag }}
@@ -13,7 +13,10 @@
           </div>
         </div>
       {% endfor %}
-      <button type="submit" class="btn btn-primary w-100">Update Book</button>
+      <button type="submit" class="btn btn-primary w-100">Update Book</button> {% endcomment %}
+      <h3>Oh,oh! :(
+        <br>
+        You don't have permissions...</h3>
       <a href="{% url 'book:detail' book.id %}" class="btn btn-secondary w-100 mt-3">Cancel</a>
     </form>
   </div>

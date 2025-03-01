@@ -4,7 +4,7 @@
     <h2 class="text-center mb-4">Add a New Book</h2>
     <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {% for field in form %}
+      {% comment %} {% for field in form %}
         <div class="mb-3">
           {{ field.label_tag }}
           {{ field }}
@@ -13,7 +13,10 @@
           </div>
         </div>
       {% endfor %}
-      <button type="submit" class="btn btn-primary w-100">Add Book</button>
+      <button type="submit" class="btn btn-primary w-100">Add Book</button> {% endcomment %}
+      <h3>Oh,oh!:(
+        <br>
+        No tienes perimisos para eso...</h3>
       <a class="btn btn-secondary w-100 mt-3" href="{% url 'book:books' %}">Cancel</a>
     </form>
   </div>

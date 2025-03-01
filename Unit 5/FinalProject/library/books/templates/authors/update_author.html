@@ -4,7 +4,7 @@
     <h2 class="text-center mb-4">Update: {{ author.name }}</h2>
     <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {% for field in form %}
+      {% comment %} {% for field in form %}
         <div class="mb-3">
           {{ field.label_tag }}
           {{ field }}
@@ -13,7 +13,10 @@
           </div>
         </div>
       {% endfor %}
-      <button type="submit" class="btn btn-primary w-100">Update Author</button>
+      <button type="submit" class="btn btn-primary w-100">Update Author</button> {% endcomment %}
+      <h3>Oh,oh! :(
+        <br>
+        You don't have permissions...</h3>
       <a href="{% url 'book:authors_detail' author.id %}" class="btn btn-secondary w-100 mt-3">Cancel</a>
     </form>
   </div>
