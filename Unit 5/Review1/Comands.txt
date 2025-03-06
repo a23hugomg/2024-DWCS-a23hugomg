@@ -1,0 +1,11 @@
+Get the students older than 20 years old.
+>>> Student.objects.filter(age__gt=20)
+Get the students older than 25 and with a finished degree
+>>> Student.objects.filter(age__gt=25,finished_degree=True)
+Get the average age of the students
+>>> from django.db.models import Avg
+>>> Student.objects.aggregate(Avg("age"))
+
+Get the number of students with a degree.
+
+From a Degree object called degree get the name and surname of all the students that have finished that degree.

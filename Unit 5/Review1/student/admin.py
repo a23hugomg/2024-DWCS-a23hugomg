@@ -5,8 +5,8 @@ from .models import Student, Degree
 
 class StudentAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name_surname",)}
-    list_filter = ("year", "finished_degree", "degree")
-    list_display = ("name_surname", "year","degree", "finished_degree")
+    list_filter = ("name_surname","age", "finished_degree", "degree")
+    list_display = ("name_surname", "age","degree", "finished_degree")
     
 class DegreeAdmin(admin.ModelAdmin):
     list_filter = ("years",)

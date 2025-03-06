@@ -16,7 +16,7 @@ class Degree(models.Model):
 class Student(models.Model):
     name_surname = models.CharField(max_length=250)
     picture = models.ImageField()
-    year = models.IntegerField(validators=[MinValueValidator(1970),MaxValueValidator(2010)])
+    age = models.IntegerField(validators=[MinValueValidator(16),MaxValueValidator(54)])
     slug = models.SlugField(default="", null=False, db_index=True, unique=True)
     finished_degree = models.BooleanField(default=False)
     degree = models.ForeignKey(Degree, related_name="fkstudents", on_delete=models.CASCADE, null=True)
