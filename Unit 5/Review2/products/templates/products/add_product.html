@@ -1,0 +1,18 @@
+{% extends "products/base.html" %}{% block content %}{% load static %}
+<h2 class="text-center mb-4">Add a New Author</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="mb-3">
+          {{ field.label_tag }}
+          {{ field }}
+          <div class="text-danger">
+            {{ field.errors }}
+          </div>
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-primary w-100">Add Author</button>
+    </form>
+
+<a href="{% url 'product-list' %}">All products!</a>
+{% endblock content %}

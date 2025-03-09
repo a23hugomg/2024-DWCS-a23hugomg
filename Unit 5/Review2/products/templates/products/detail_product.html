@@ -1,0 +1,20 @@
+{% extends "products/base.html" %}
+{% block content %}
+{% load static %}
+
+<h2>{{ product.name }}</h2>
+
+<img src="{{ product.picture.url }}" width="100px" alt="{{ product.name }}"/>
+
+<p><strong>Description:</strong> {{ product.description }}</p>
+<p><strong>Price:</strong> {{ product.price }}$</p>
+<p><strong>Category:</strong> {{ product.category.name }}</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <button type="submit">Add to Favorites</button>
+</form>
+
+<a href="{% url 'product-list' %}">← Back to all products</a>
+
+{% endblock content %}
