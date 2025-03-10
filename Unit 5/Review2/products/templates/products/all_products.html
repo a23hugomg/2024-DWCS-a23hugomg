@@ -1,15 +1,15 @@
 {% extends "products/base.html" %}{% block content %}{% load static %}
 <h2>All products:</h2>
 <ul>
-    {% for product in products %}
-        <li>
-            <img src="{{ product.picture.url }}" width="50px"/> 
-            {{ product.name }},
-            {{ product.price }}$.
-            <br/>
-            -Category:{{ product.category }}
-        </li>
-        <a href="{{ product.get_absolute_url }}">See more</a>
-    {% endfor %} 
+  {% for product in products %}
+  <li>
+    <img src="{{ product.picture.url }}" width="50px" />
+    {{ product.name }}, {{ product.price }}$.
+    <br />
+    -Category:{{ product.category }} <br />
+    -Favourite?:{{ product.favourite }}
+  </li>
+  <a href="{{ product.get_absolute_url }}">See more</a>
+  {% endfor %}
 </ul>
 {% endblock content %}
