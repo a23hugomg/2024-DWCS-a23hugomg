@@ -9,10 +9,15 @@
 <p><strong>Category:</strong> {{ product.category.name }}</p>
 <p><strong>Favourite:</strong> {{ product.favourite }}</p>
 
-<form action="" method="POST">
-  {% csrf_token %}
-  <button type="submit">Add to Favorites</button>
-</form>
+{% if is_favorite %}
+  <h2>Es favorito!</h2>
+{% else %}
+  <form action="/products/favourites/" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ product.id }}">
+    <button type="submit">Add to Favorites</button>
+  </form>
+{% endif %}
 
 <a href="{% url 'product-list' %}">← Back to all products</a>
 
