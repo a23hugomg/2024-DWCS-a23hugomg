@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Spotify{% endblock title %}</title>
+</head>
+<body>
+    <header>
+        <h1>Spotify</h1>
+        <img src="{% static "song/image.png" %}" alt="Logo Spotify" width="50px">
+    </header>
+
+    {% block content %}{% endblock content %}
+</body>
+</html>

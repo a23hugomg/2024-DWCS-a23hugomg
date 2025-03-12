@@ -1,3 +1,22 @@
-{% for song in songs %}
-{{ song.title }}
-{% endfor %}
+{% extends "song/base.html" %}{% load static %}
+
+{% block title %}
+    Spotify
+{% endblock title %}
+
+{% block content %}
+    {% for song in songs %}
+        <a href="{{ song.get_absolute_url }}">     
+            <img src="{{ song.cover.url }}" alt="cover" width="100px">
+            {{ song.title }}
+        </a>
+        <br>
+    {% endfor %}
+
+    <h1>Best artists</h1>
+    {% for song in songs %}
+        {{ song.artist.name }}
+    {% endfor %}
+<br>
+    <a href="{% url "song-list" %}">All songs</a>
+{% endblock content %}

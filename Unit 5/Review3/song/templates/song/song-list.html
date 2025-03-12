@@ -1,0 +1,14 @@
+{% extends "song/base.html" %}{% load static %}
+{% block title %}
+    All songs
+{% endblock title %}
+{% block content %}
+    {% for song in songs %}
+    <a href="{{ song.get_absolute_url }}">     
+
+        <img src="{{ song.cover.url }}" alt="cover" width="100px">
+        {{ song.title }}
+    </a>
+        <br>
+    {% endfor %}
+{% endblock content %}

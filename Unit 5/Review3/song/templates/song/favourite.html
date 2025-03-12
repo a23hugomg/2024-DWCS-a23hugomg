@@ -1,0 +1,30 @@
+{% extends "song/base.html" %}
+{% load static %}
+
+{% block title %}Favorite Songs{% endblock title %}
+
+{% block content %}
+    <h2>🎵 Your Favorite Songs</h2>
+
+    {% if stored_songs %}
+        <ul>
+            {% for song in stored_songs %}
+                <li>
+                    <img src="{{ song.cover.url }}" alt="{{ song.title }}" width="50">
+                    <strong>{{ song.title }}</strong> - {{ song.artist.name }}
+
+                    <!-- Botón para eliminar de favoritos -->
+                    <form action="{% url 'remove-favorite' song.slug %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">Remove ❌</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No favorite songs yet. ⭐ Add some!</p>
+    {% endif %}
+
+    <!-- Botón para volver a la lista de canciones -->
+    <p><a href="{% url 'song-list' %}">🔙 Back to all songs</a></p>
+{% endblock content %}
